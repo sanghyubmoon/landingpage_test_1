@@ -1,0 +1,48 @@
+<svg width="600" height="500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="rocket-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4353FF" />
+      <stop offset="100%" stop-color="#6C63FF" />
+    </linearGradient>
+    <linearGradient id="flame-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF9900" />
+      <stop offset="100%" stop-color="#FF5470" />
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="10" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  
+  <!-- 로켓 본체 -->
+  <path d="M300,50 C370,50 400,150 400,250 L400,350 C400,370 380,390 360,390 L240,390 C220,390 200,370 200,350 L200,250 C200,150 230,50 300,50 Z" fill="url(#rocket-gradient)" />
+  
+  <!-- 로켓 창문 -->
+  <circle cx="300" cy="200" r="30" fill="#F8FAFF" />
+  <circle cx="300" cy="200" r="20" fill="#E1E8FF" />
+  
+  <!-- 로켓 날개 -->
+  <path d="M200,300 L150,350 L150,250 Z" fill="#3E63DD" />
+  <path d="M400,300 L450,350 L450,250 Z" fill="#3E63DD" />
+  
+  <!-- 로켓 엔진 -->
+  <rect x="240" y="390" width="120" height="30" rx="15" fill="#333" />
+  
+  <!-- 로켓 불꽃 -->
+  <path d="M260,420 C260,470 280,480 300,500 C320,480 340,470 340,420 Z" fill="url(#flame-gradient)" filter="url(#glow)" />
+  
+  <!-- 로켓 로고 -->
+  <text x="300" y="150" font-family="Arial" font-size="24" font-weight="bold" text-anchor="middle" fill="#fff">COHETE</text>
+  
+  <!-- 주변 별 -->
+  <circle cx="150" cy="100" r="3" fill="#fff" />
+  <circle cx="450" cy="150" r="2" fill="#fff" />
+  <circle cx="100" cy="200" r="4" fill="#fff" />
+  <circle cx="500" cy="250" r="3" fill="#fff" />
+  <circle cx="200" cy="50" r="2" fill="#fff" />
+  <circle cx="400" cy="80" r="3" fill="#fff" />
+  
+  <!-- 주변 구름/연기 -->
+  <ellipse cx="200" cy="350" rx="50" ry="20" fill="#E1E8FF" opacity="0.5" />
+  <ellipse cx="400" cy="330" rx="40" ry="15" fill="#E1E8FF" opacity="0.4" />
+</svg>
