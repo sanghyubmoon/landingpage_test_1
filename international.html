@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>COHETE LAB - 국제 진출</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: #0f1629;
+      color: #fff;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* 상단 탭 스타일 */
+    .tabs-top {
+      display: flex;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      margin-bottom: 40px;
+    }
+
+    .tab-top {
+      padding: 15px 20px;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: all 0.3s ease;
+      position: relative;
+      font-size: 16px;
+    }
+
+    .tab-top.active {
+      opacity: 1;
+    }
+
+    .tab-top.active::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: #3c67e3;
+    }
+
+    /* 중앙 탭 스타일 */
+    .tabs-center {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+
+    .tab-center {
+      padding: 15px 20px;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: all 0.3s ease;
+      position: relative;
+      font-size: 18px;
+    }
+
+    .tab-center.active {
+      opacity: 1;
+    }
+
+    .tab-center.active::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: #3c67e3;
+    }
+
+    /* 지구 애니메이션 영역 */
+    .earth-container {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      background-color: #06101f;
+      border-radius: 8px;
+    }
+
+    /* 지구 스타일 및 애니메이션 */
+    .earth-wrapper {
+      position: relative;
+      width: 320px;
+      height: 320px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .earth {
+      width: 300px;
+      height: 300px;
+      background-image: url('https://i.imgur.com/oWz2Mke.png');
+      background-size: cover;
+      border-radius: 50%;
+      box-shadow: 0 0 30px rgba(29, 108, 223, 0.4), inset 0 0 30px rgba(29, 108, 223, 0.2);
+      animation: rotate 60s linear infinite;
+      position: relative;
+    }
+
+    @keyframes rotate {
+      0% {
+        background-position: 0% center;
+      }
+      100% {
+        background-position: -200% center;
+      }
+    }
+
+    /* 지구 주변 효과 */
+    .earth::before {
+      content: '';
+      position: absolute;
+      width: 110%;
+      height: 110%;
+      top: -5%;
+      left: -5%;
+      border-radius: 50%;
+      box-shadow: inset 0 0 20px 2px rgba(255, 255, 255, 0.2);
+      pointer-events: none;
+    }
+
+    .glow {
+      position: absolute;
+      width: 340px;
+      height: 340px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(29, 108, 223, 0.4) 0%, rgba(29, 108, 223, 0) 70%);
+      animation: pulse 6s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.05); opacity: 0.7; }
+      100% { transform: scale(1); opacity: 0.5; }
+    }
+
+    /* 국가 마커 및 연결선 */
+    .marker {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: #ff4c4c;
+      border-radius: 50%;
+      z-index: 5;
+      box-shadow: 0 0 10px #ff4c4c;
+    }
+
+    .marker.korea {
+      top: 35%;
+      right: 32%;
+    }
+
+    .marker.usa {
+      top: 35%;
+      left: 40%;
+    }
+
+    .marker.europe {
+      top: 30%;
+      left: 48%;
+    }
+
+    .marker.asia {
+      top: 45%;
+      right: 39%;
+    }
+
+    .connection {
+      position: absolute;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(60, 103, 227, 0), rgba(60, 103, 227, 1), rgba(60, 103, 227, 0));
+      transform-origin: left center;
+      z-index: 2;
+      animation: pulse-line 4s infinite alternate;
+    }
+
+    @keyframes pulse-line {
+      0% { opacity: 0.3; }
+      100% { opacity: 0.8; }
+    }
+
+    /* 별 */
+    .stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+    }
+
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background-color: white;
+      border-radius: 50%;
+    }
+
+    /* 버튼 스타일 */
+    .action-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      align-items: center;
+      margin-top: 30px;
+    }
+
+    .btn {
+      background-color: #3c67e3;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 15px 30px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 300px;
+      text-align: center;
+    }
+
+    .btn:hover {
+      background-color: #2850c2;
+      transform: translateY(-2px);
+    }
+
+    /* 미디어 쿼리 */
+    @media (max-width: 768px) {
+      .tabs-top, .tabs-center {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .earth-wrapper, .earth {
+        width: 260px;
+        height: 260px;
+      }
+      
+      .glow {
+        width: 280px;
+        height: 280px;
+      }
+      
+      .btn {
+        width: 250px;
+      }
+    }
+
+    /* 국가별 정보 섹션 */
+    .country-info {
+      display: none;
+      margin-top: 40px;
+      padding: 30px;
+      background-color: rgba(6, 16, 31, 0.7);
+      border-radius: 8px;
+    }
+
+    .country-info.active {
+      display: block;
+    }
+
+    .country-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .country-flag {
+      width: 48px;
+      height: 48px;
+      margin-right: 15px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .country-title h3 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .country-title p {
+      margin: 5px 0 0;
+      opacity: 0.7;
+    }
+
+    .country-details {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .country-stat {
+      background-color: rgba(60, 103, 227, 0.1);
+      padding: 15px;
+      border-radius: 8px;
+      border-left: 3px solid #3c67e3;
+    }
+
+    .country-stat h4 {
+      margin: 0 0 10px;
+      font-size: 16px;
+      color: #3c67e3;
+    }
+
+    .country-stat p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    /* 국제 마케팅 전략 섹션 */
+    .strategy-section {
+      margin-top: 60px;
+    }
+
+    .strategy-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .strategy-card {
+      background-color: rgba(6, 16, 31, 0.7);
+      padding: 25px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .strategy-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .strategy-icon {
+      width: 60px;
+      height: 60px;
+      background-color: rgba(60, 103, 227, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .strategy-icon i {
+      font-size: 24px;
+      color: #3c67e3;
+    }
+
+    .strategy-card h3 {
+      margin: 0 0 15px;
+      font-size: 20px;
+    }
+
+    .strategy-card p {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.6;
+      opacity: 0.8;
+    }
+
+    /* 세션 타이틀 스타일 */
+    .section-title {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 15px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      font-size: 16px;
+      opacity: 0.7;
+      max-width: 700px;
+      margin: 0 auto 40px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- 상단 탭 -->
+    <div class="tabs-top">
+      <div class="tab-top active" onclick="changeTab('top', 0)">한국 → 해외 진출</div>
+      <div class="tab-top" onclick="changeTab('top', 1)">해외 → 한국 진출</div>
+    </div>
+
+    <!-- 중앙 탭 -->
+    <div class="tabs-center">
+      <div class="tab-center active" onclick="changeTab('center', 0)">한국 → 해외 진출</div>
+      <div class="tab-center" onclick="changeTab('center', 1)">해외 → 한국 진출</div>
+    </div>
+
+    <!-- 지구 애니메이션 -->
+    <div class="earth-container">
+      <div class="stars" id="stars"></div>
+      
+      <div class="earth-wrapper">
+        <div class="glow"></div>
+        <div class="earth" id="earth"></div>
+        
+        <!-- 국가 마커 -->
+        <div class="marker korea" onclick="showCountryInfo('korea')"></div>
+        <div class="marker usa" onclick="showCountryInfo('usa')"></div>
+        <div class="marker europe" onclick="showCountryInfo('europe')"></div>
+        <div class="marker asia" onclick="showCountryInfo('asia')"></div>
+      </div>
+    </div>
+
+    <!-- 국가별 정보 섹션 -->
+    <div id="koreaInfo" class="country-info">
+      <div class="country-header">
+        <img src="https://raw.githubusercontent.com/sanghyubmoon/landingpage_test_1/main/images/korea-flag.png" alt="대한민국 국기" class="country-flag">
+        <div class="country-title">
+          <h3>대한민국</h3>
+          <p>아시아 주요 시장</p>
+        </div>
+      </div>
+      <div class="country-details">
+        <div class="country-stat">
+          <h4>인플루언서 시장 규모</h4>
+          <p>2025년 기준 약 2조 3천억원 규모로 성장 중이며, 매년 15% 이상 확대되고 있습니다.</p>
+        </div>
+        <div class="country-stat">
+          <h4>주요 플랫폼</h4>
+          <p>인스타그램(45%), 유튜브(30%), 틱톡(15%), 네이버/카카오(10%)</p>
+        </div>
+        <div class="country-stat">
+          <h4>마케팅 효과</h4>
+          <p>소비자의 78%가 인플루언서 추천에 따라 구매 결정을 내리며, Z세대의 경우 그 비율이 85%에 달합니다.</p>
+        </div>
+        <div class="country-stat">
+          <h4>특이사항</h4>
+          <p>네이버, 카카오 등 로컬 플랫폼을 통한 인플루언서 마케팅이 중요하며, 한류 콘텐츠와 연계한 전략이 효과적입니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="usaInfo" class="country-info">
+      <div class="country-header">
+        <img src="https://raw.githubusercontent.com/sanghyubmoon/landingpage_test_1/main/images/usa-flag.png" alt="미국 국기" class="country-flag">
+        <div class="country-title">
+          <h3>미국</h3>
+          <p>북미 최대 시장</p>
+        </div>
+      </div>
+      <div class="country-details">
+        <div class="country-stat">
+          <h4>인플루언서 시장 규모</h4>
+          <p>2025년 기준 약 250억 달러 규모로, 글로벌 인플루언서 시장의 약 30%를 차지합니다.</p>
+        </div>
+        <div class="country-stat">
+          <h4>주요 플랫폼</h4>
+          <p>인스타그램(35%), 틱톡(25%), 유튜브(25%), 트위터/기타(15%)</p>
+        </div>
+        <div class="country-stat">
+          <h4>마케팅 효과</h4>
+          <p>인플루언서 마케팅 ROI는 평균 $5.78/$1이며, 마이크로 인플루언서(1만-5만 팔로워)가 가장 높은 참여율을 보입니다.</p>
+        </div>
+        <div class="country-stat">
+          <h4>특이사항</h4>
+          <p>FTC 광고 규제가 엄격하며, 다양성과 포용성을 고려한 인플루언서 선정이 중요합니다. 아마존과 연계한 커머스 전략이 효과적입니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="europeInfo" class="country-info">
+      <div class="country-header">
+        <img src="https://raw.githubusercontent.com/sanghyubmoon/landingpage_test_1/main/images/eu-flag.png" alt="유럽 연합 국기" class="country-flag">
+        <div class="country-title">
+          <h3>유럽</h3>
+          <p>다국적 시장</p>
+        </div>
+      </div>
+      <div class="country-details">
+        <div class="country-stat">
+          <h4>인플루언서 시장 규모</h4>
+          <p>2025년 기준 약 150억 유로 규모로, 국가별로 다양한 성장세를 보이고 있습니다.</p>
+        </div>
+        <div class="country-stat">
+          <h4>주요 플랫폼</h4>
+          <p>인스타그램(40%), 유튜브(25%), 틱톡(20%), 지역 플랫폼(15%)</p>
+        </div>
+        <div class="country-stat">
+          <h4>마케팅 효과</h4>
+          <p>국가별 차이가 있으나, 평균적으로 소비자의 65%가 인플루언서 추천 제품을 구매한 경험이 있습니다.</p>
+        </div>
+        <div class="country-stat">
+          <h4>특이사항</h4>
+          <p>GDPR, 국가별 광고 규제를 준수해야 하며, 지속가능성을 강조한 콘텐츠가 효과적입니다. 국가별 현지화 전략이 필수적입니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="asiaInfo" class="country-info">
+      <div class="country-header">
+        <img src="https://raw.githubusercontent.com/sanghyubmoon/landingpage_test_1/main/images/asia-flag.png" alt="아시아 지역" class="country-flag">
+        <div class="country-title">
+          <h3>동남아시아</h3>
+          <p>급성장 시장</p>
+        </div>
+      </div>
+      <div class="country-details">
+        <div class="country-stat">
+          <h4>인플루언서 시장 규모</h4>
+          <p>2025년 기준 약 50억 달러 규모로, 연간 성장률 25%로 세계에서 가장 빠르게 성장 중입니다.</p>
+        </div>
+        <div class="country-stat">
+          <h4>주요 플랫폼</h4>
+          <p>틱톡(35%), 인스타그램(30%), 유튜브(25%), 지역 플랫폼(10%)</p>
+        </div>
+        <div class="country-stat">
+          <h4>마케팅 효과</h4>
+          <p>젊은 인구 비율이 높아 인플루언서 마케팅 효과가 높으며, 소셜 커머스와의 결합이 특히 효과적입니다.</p>
+        </div>
+        <div class="country-stat">
+          <h4>특이사항</h4>
+          <p>라인, 위챗 등 지역 특화 플랫폼이 중요하며, 라이브 커머스 전략이 매우 효과적입니다. 국가별 문화적 차이를 고려한 접근이 필요합니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 국제 마케팅 전략 섹션 -->
+    <div class="strategy-section">
+      <h2 class="section-title">글로벌 인플루언서 마케팅 전략</h2>
+      <p class="section-subtitle">CORE-RANK의 데이터 기반 접근으로 국제 시장에서 성공적인 인플루언서 마케팅을 실현하세요</p>
+
+      <div class="strategy-cards">
+        <div class="strategy-card">
+          <div class="strategy-icon">
+            <i class="fas fa-globe"></i>
+          </div>
+          <h3>현지화 전략</h3>
+          <p>각 국가의 문화, 소비 패턴, 트렌드를 분석하여 현지에 최적화된 인플루언서 마케팅 전략을 수립합니다. CORE-RANK의 지역별 데이터 필터링으로 타겟 시장에 적합한 인플루언서를 발굴합니다.</p>
+        </div>
+        <div class="strategy-card">
+          <div class="strategy-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h3>국가별 성과 측정</h3>
+          <p>국가별 맞춤형 KPI 설정 및 측정 시스템으로 글로벌 캠페인의 성과를 실시간으로 추적하고 분석합니다. 시장별 벤치마크 데이터를 기반으로 최적의 마케팅 의사결정을 지원합니다.</p>
+        </div>
+        <div class="strategy-card">
+          <div class="strategy-icon">
+            <i class="fas fa-comments"></i>
+          </div>
+          <h3>다국어 소통 관리</h3>
+          <p>AI 번역 및 현지 전문가 네트워크를 통해 언어 장벽 없는 인플루언서 협업을 지원합니다. 실시간 소통 플랫폼으로 글로벌 인플루언서와의 원활한 협업이 가능합니다.</p>
+        </div>
+        <div class="strategy-card">
+          <div class="strategy-icon">
+            <i class="fas fa-balance-scale"></i>
+          </div>
+          <h3>규제 준수 지원</h3>
+          <p>각 국가의 광고 규제, 개인정보 보호법 등 법적 요건을 자동으로 체크하여 컴플라이언스 리스크를 최소화합니다. 국가별 필수 해시태그, 면책 문구 등을 자동 제안합니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 액션 버튼 -->
+    <div class="action-buttons">
+      <div class="btn" id="exportBtn">한국 → 해외 진출</div>
+      <div class="btn" id="influencerBtn">글로벌 인플루언서 마케팅</div>
+    </div>
+  </div>
+
+  <script>
+    // 탭 전환 함수
+    function changeTab(type, index) {
+      const tabs = document.querySelectorAll(`.tab-${type}`);
+      tabs.forEach(tab => tab.classList.remove('active'));
+      tabs[index].classList.add('active');
+      
+      // 지구 회전 방향 변경 (인덱스에 따라)
+      const earth = document.getElementById('earth');
+      if (index === 0) {
+        earth.style.animation = 'rotate 60s linear infinite';
+      } else {
+        earth.style.animation = 'rotate 60s linear infinite reverse';
+      }
+      
+      // 버튼 텍스트 업데이트
+      const exportBtn = document.getElementById('exportBtn');
+      if (index === 0) {
+        exportBtn.textContent = '한국 → 해외 진출';
+      } else {
+        exportBtn.textContent = '해외 → 한국 진출';
+      }
+
+      // 국가 정보 섹션 숨기기
+      const countryInfos = document.querySelectorAll('.country-info');
+      countryInfos.forEach(info => info.classList.remove('active'));
+    }
+
+    // 별 생성 함수
+    function createStars() {
+      const starsContainer = document.getElementById('stars');
+      
+      for (let i = 0; i < 100; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        
+        // 랜덤 위치
+        star.style.left = `${Math.random() * 100}%`;
+        star.style.top = `${Math.random() * 100}%`;
+        
+        // 랜덤 크기
+        const size = Math.random() * 2 + 1;
+        star.style.width = `${size}px`;
+        star.style.height = `${size}px`;
+        
+        // 랜덤 투명도
+        star.style.opacity = Math.random() * 0.8 + 0.2;
+        
+        // 깜빡임 애니메이션
+        star.style.animation = `twinkle ${Math.random() * 5 + 2}s infinite alternate`;
+        
+        starsContainer.appendChild(star);
+      }
+    }
+
+    // 연결선 생성 함수
+    function createConnections() {
+      const earthWrapper = document.querySelector('.earth-wrapper');
+      const koreaMarker = document.querySelector('.marker.korea');
+      const markers = document.querySelectorAll('.marker:not(.korea)');
+      
+      // 한국에서 다른 모든 마커로 연결선 생성
+      markers.forEach(marker => {
+        const connection = document.createElement('div');
+        connection.className = 'connection';
+        
+        // 위치 계산
+        const koreaRect = koreaMarker.getBoundingClientRect();
+        const markerRect = marker.getBoundingClientRect();
+        const wrapperRect = earthWrapper.getBoundingClientRect();
+        
+        // 상대 위치
+        const startX = koreaRect.left - wrapperRect.left + koreaRect.width/2;
+        const startY = koreaRect.top - wrapperRect.top + koreaRect.height/2;
+        const endX = markerRect.left - wrapperRect.left + markerRect.width/2;
+        const endY = markerRect.top - wrapperRect.top + markerRect.height/2;
+        
+        // 길이와 각도 계산
+        const length = Math.sqrt(Math.pow(endX - startX, 2) + Math.pow(endY - startY, 2));
+        const angle = Math.atan2(endY - startY, endX - startX) * 180 / Math.PI;
+        
+        // 스타일 적용
+        connection.style.width = `${length}px`;
+        connection.style.left = `${startX}px`;
+        connection.style.top = `${startY}px`;
+        connection.style.transform = `rotate(${angle}deg)`;
+        
+        earthWrapper.appendChild(connection);
+      });
+    }
+
+    // 국가 정보 표시 함수
+    function showCountryInfo(country) {
+      // 모든 국가 정보 섹션 비활성화
+      const countryInfos = document.querySelectorAll('.country-info');
+      countryInfos.forEach(info => info.classList.remove('active'));
+      
+      // 선택한 국가 정보 섹션 활성화
+      const selectedInfo = document.getElementById(`${country}Info`);
+      if (selectedInfo) {
+        selectedInfo.classList.add('active');
+        
+        // 스크롤 이동
+        selectedInfo.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }
+    
+    // 페이지 로드 완료 후 실행
+    window.addEventListener('load', () => {
+      // 고해상도 지구 이미지 설정
+      const earthElement = document.getElementById('earth');
+      // 실제 지구 이미지 URL로 교체
+      // 여기서는 기본 이미지를 CSS에 직접 설정했으므로 필요 없을 수 있음
+      // earthElement.style.backgroundImage = "url('https://i.imgur.com/oWz2Mke.png')";
+      
+      createStars();
+      setTimeout(createConnections, 500); // 500ms 후 연결선 생성
+
+      // 버튼 이벤트 리스너 추가
+      document.getElementById('exportBtn').addEventListener('click', function() {
+        window.location.href = '#contact'; // 문의하기 섹션으로 이동
+      });
+
+      document.getElementById('influencerBtn').addEventListener('click', function() {
+        window.location.href = 'index.html#global'; // 메인 페이지의 글로벌 섹션으로 이동
+      });
+    });
+
+    // 애니메이션 키프레임 추가
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes twinkle {
+        0% { opacity: 0.1; transform: scale(1); }
+        100% { opacity: 0.8; transform: scale(1.2); }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>
