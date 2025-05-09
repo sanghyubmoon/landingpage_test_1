@@ -1,6 +1,6 @@
-<svg width="300" height="100" viewBox="0 0 300 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
   <!-- Dark circle background -->
-  <circle cx="50" cy="50" r="40" fill="#0F172A"/>
+  <circle cx="40" cy="40" r="40" fill="#0F172A"/>
   
   <!-- Gradient for flame effect -->
   <defs>
@@ -13,37 +13,31 @@
   </defs>
   
   <!-- Rocket elements -->
-  <g transform="translate(50, 45)">
+  <g transform="translate(40, 40)">
     <!-- Main rocket body - sleek SpaceX style -->
-    <path d="M-5,-32 L5,-32 Q7,-32 7,-29 L7,12 Q7,17 3,17 L-3,17 Q-7,17 -7,12 L-7,-29 Q-7,-32 -5,-32 Z" fill="#FFFFFF"/>
+    <path d="M-6,-30 L6,-30 Q8,-30 8,-27 L8,14 Q8,19 4,19 L-4,19 Q-8,19 -8,14 L-8,-27 Q-8,-30 -6,-30 Z" fill="#FFFFFF"/>
     
     <!-- Rocket nose -->
-    <path d="M-5,-32 Q-5,-38 0,-40 Q5,-38 5,-32 Z" fill="#FFFFFF"/>
+    <path d="M-6,-30 Q-6,-36 0,-38 Q6,-36 6,-30 Z" fill="#FFFFFF"/>
     
     <!-- Rocket detail lines - cleaner and more minimal -->
-    <line x1="-7" y1="-15" x2="7" y2="-15" stroke="#3E63DD" stroke-width="0.5"/>
-    <line x1="-7" y1="0" x2="7" y2="0" stroke="#3E63DD" stroke-width="0.5"/>
+    <line x1="-8" y1="-15" x2="8" y2="-15" stroke="#3E63DD" stroke-width="0.5"/>
+    <line x1="-8" y1="0" x2="8" y2="0" stroke="#3E63DD" stroke-width="0.5"/>
     
     <!-- SpaceX-style grid fins - more angular and precise -->
-    <path d="M-7,-10 L-13,-5 L-13,-15 Z" fill="#3E63DD"/>
-    <path d="M7,-10 L13,-5 L13,-15 Z" fill="#3E63DD"/>
+    <path d="M-8,-10 L-14,-5 L-14,-15 Z" fill="#3E63DD"/>
+    <path d="M8,-10 L14,-5 L14,-15 Z" fill="#3E63DD"/>
     
     <!-- Rocket engine section - more detailed -->
-    <path d="M-3,17 L3,17 L3.5,20 L-3.5,20 Z" fill="#3E63DD"/>
+    <path d="M-4,19 L4,19 L4.5,22 L-4.5,22 Z" fill="#3E63DD"/>
     
     <!-- Engine nozzle -->
-    <path d="M-2,20 L2,20 L3,22 L-3,22 Z" fill="#0F172A"/>
+    <path d="M-2,22 L2,22 L3,24 L-3,24 Z" fill="#0F172A"/>
     
     <!-- SpaceX-style flame -->
-    <path d="M-2.5,22 C-3,26 -2.5,32 0,40 C2.5,32 3,26 2.5,22 Z" fill="url(#flameGradient)"/>
+    <path d="M-3,24 C-3.5,28 -3,34 0,42 C3,34 3.5,28 3,24 Z" fill="url(#flameGradient)"/>
     
     <!-- Subtle glow effect around the flame -->
-    <ellipse cx="0" cy="28" rx="5" ry="8" fill="#FF5470" opacity="0.15"/>
-    
-    <!-- Flight path - more elegant curve -->
-    <path d="M-25,-20 C-15,-10 -5,0 0,5 C5,10 15,20 25,30" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0.3" stroke-dasharray="2 2" fill="none"/>
+    <ellipse cx="0" cy="30" rx="6" ry="9" fill="#FF5470" opacity="0.15"/>
   </g>
-  
-  <!-- Text "COHETE LAB" - bolder and more spacious like SpaceX font -->
-  <text x="110" y="58" font-family="Arial, sans-serif" font-size="28" font-weight="900" letter-spacing="1" fill="#0F172A">COHETE LAB</text>
 </svg>
