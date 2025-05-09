@@ -39,6 +39,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     top: targetElement.offsetTop - 80,
                     behavior: 'smooth'
                 });
+                
+                // 모바일 메뉴가 열려있을 경우 닫기
+                if (window.innerWidth <= 768) {
+                    const nav = document.querySelector('nav');
+                    if (nav.style.display === 'flex') {
+                        document.querySelector('.mobile-menu-toggle').click();
+                    }
+                }
             }
         });
     });
@@ -97,6 +105,79 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // CORE-RANK 탭 처리
+    const coreTabBtns = document.querySelectorAll('.core-tab-btn');
+    if (coreTabBtns.length > 0) {
+        coreTabBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // 모든 탭 버튼에서 active 클래스 제거
+                coreTabBtns.forEach(b => b.classList.remove('active'));
+                
+                // 클릭된 탭 버튼에 active 클래스 추가
+                this.classList.add('active');
+                
+                // 모든 탭 콘텐츠 숨기기
+                const tabContents = document.querySelectorAll('.core-tab-content');
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                // 선택된 탭 콘텐츠 표시
+                const tabId = this.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+    }
+    
+    // 요금제 토글
+    const pricingToggle = document.getElementById('pricing-toggle');
+    if (pricingToggle) {
+        pricingToggle.addEventListener('change', function() {
+            const monthlyPrices = document.querySelectorAll('.price.monthly');
+            const annualPrices = document.querySelectorAll('.price.annual');
+            const toggleTexts = document.querySelectorAll('.pricing-toggle span');
+            
+            if (this.checked) {
+                // 연간 요금제 표시
+                monthlyPrices.forEach(price => price.style.display = 'none');
+                annualPrices.forEach(price => price.style.display = 'inline');
+                toggleTexts[0].classList.remove('active');
+                toggleTexts[1].classList.add('active');
+            } else {
+                // 월간 요금제 표시
+                monthlyPrices.forEach(price => price.style.display = 'inline');
+                annualPrices.forEach(price => price.style.display = 'none');
+                toggleTexts[0].classList.add('active');
+                toggleTexts[1].classList.remove('active');
+            }
+        });
+    }
+    
+    // FAQ 토글
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    if (faqQuestions.length > 0) {
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', function() {
+                const faqItem = this.parentElement;
+                const isActive = faqItem.classList.contains('active');
+                
+                // 모든 FAQ 아이템 닫기
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                    const answer = item.querySelector('.faq-answer');
+                    answer.style.padding = '0 1.5rem';
+                    answer.style.maxHeight = '0';
+                });
+                
+                // 클릭된 아이템이 이미 활성화 상태가 아니었다면 열기
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                    const answer = faqItem.querySelector('.faq-answer');
+                    answer.style.padding = '1.5rem';
+                    answer.style.maxHeight = answer.scrollHeight + 40 + 'px'; // 패딩 고려
+                }
+            });
+        });
+    }
+    
     // 폼 제출 처리
     const businessForm = document.getElementById('businessForm');
     if (businessForm) {
@@ -118,6 +199,22 @@ document.addEventListener('DOMContentLoaded', function() {
             businessForm.reset();
         });
     }
+    
+    // CTA 버튼 이벤트 처리
+    const ctaButtons = document.querySelectorAll('.cta-button');
+    ctaButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            if (!this.closest('form')) {
+                const contactSection = document.getElementById('contact');
+                if (contactSection) {
+                    window.scrollTo({
+                        top: contactSection.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        });
+    });
     
     // 애니메이션 요소 초기화
     const animatedElements = document.querySelectorAll('.animate-on-scroll');
@@ -166,4 +263,28 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 페이지 로드 시 애니메이션
     document.body.classList.add('loaded');
+    
+    // CORE-RANK 섹션 이미지 변경 인터벌 (데모용)
+    let imageInterval;
+    const startImageInterval = () => {
+        if (imageInterval) clearInterval(imageInterval);
+        
+        const coreTabs = document.querySelectorAll('.core-tab-btn');
+        let currentIndex = 0;
+        
+        imageInterval = setInterval(() => {
+            currentIndex = (currentIndex + 1) % coreTabs.length;
+            coreTabs[currentIndex].click();
+        }, 5000);
+    };
+    
+    // 페이지 로드 시 이미지 인터벌 시작
+    startImageInterval();
+    
+    // 탭 클릭 시 인터벌 재시작
+    document.querySelectorAll('.core-tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            startImageInterval();
+        });
+    });
 });
