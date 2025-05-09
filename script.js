@@ -305,7 +305,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (searchBar && searchButton) {
         // 검색창 포커스 이벤트
         searchBar.addEventListener('focus', function() {
-            this.parentElement.style.boxShadow = '0 0 0 3px rgba(34, 197, 94, 0.2)';
+            this.parentElement.style.boxShadow = '0 0 0 3px rgba(62, 99, 221, 0.2)';
         });
         
         searchBar.addEventListener('blur', function() {
@@ -418,6 +418,36 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // 약간의 지연 후 연결선 생성 (DOM이 완전히 렌더링 된 후)
         setTimeout(createConnections, 500);
+
+        // 마커 국기 이미지 설정
+        const markers = document.querySelectorAll('.marker');
+        markers.forEach(marker => {
+            const flagImg = document.createElement('img');
+            
+            if (marker.classList.contains('korea')) {
+                flagImg.src = 'https://raw.githubusercontent.com/sanghyubmoon/landingpage_test_1/main/images/korea-flag.svg';
+                flagImg.alt = '한국';
+            } else if (marker.classList.contains('usa')) {
+                flagImg.src = 'https://raw.githubusercontent.com/sanghyubmoon/landingpage_test_1/main/images/usa-flag.svg';
+                flagImg.alt = '미국';
+            } else if (marker.classList.contains('europe')) {
+                flagImg.src = 'https://raw.githubusercontent.com/sanghyubmoon/landingpage_test_1/main/images/eu-flag.svg';
+                flagImg.alt = '유럽';
+            } else if (marker.classList.contains('asia')) {
+                flagImg.src = 'https://raw.githubusercontent.com/sanghyubmoon/landingpage_test_1/main/images/asia-flag.svg';
+                flagImg.alt = '아시아';
+            }
+            
+            flagImg.style.width = '20px';
+            flagImg.style.height = '15px';
+            flagImg.style.position = 'absolute';
+            flagImg.style.top = '-15px';
+            flagImg.style.left = '-10px';
+            flagImg.style.boxShadow = '0 0 4px rgba(0, 0, 0, 0.3)';
+            flagImg.style.borderRadius = '2px';
+            
+            marker.appendChild(flagImg);
+        });
     }
     
     // 페이지 로드 시 지구 효과 초기화
