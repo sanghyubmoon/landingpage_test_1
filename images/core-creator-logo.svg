@@ -13,37 +13,37 @@
   </defs>
   
   <!-- Rocket elements -->
-  <g transform="translate(50, 47)">
-    <!-- Main rocket body - slimmer, more like SpaceX Falcon 9 -->
-    <path d="M-6,-25 L6,-25 Q8,-25 8,-22 L8,15 Q8,20 4,20 L-4,20 Q-8,20 -8,15 L-8,-22 Q-8,-25 -6,-25 Z" fill="#FFFFFF"/>
+  <g transform="translate(50, 45)">
+    <!-- Main rocket body - sleek SpaceX style -->
+    <path d="M-5,-32 L5,-32 Q7,-32 7,-29 L7,12 Q7,17 3,17 L-3,17 Q-7,17 -7,12 L-7,-29 Q-7,-32 -5,-32 Z" fill="#FFFFFF"/>
     
     <!-- Rocket nose -->
-    <path d="M-6,-25 Q-6,-33 0,-35 Q6,-33 6,-25 Z" fill="#FFFFFF"/>
+    <path d="M-5,-32 Q-5,-38 0,-40 Q5,-38 5,-32 Z" fill="#FFFFFF"/>
     
-    <!-- Rocket detail lines -->
-    <line x1="-8" y1="-5" x2="8" y2="-5" stroke="#3E63DD" stroke-width="0.5"/>
-    <line x1="-8" y1="0" x2="8" y2="0" stroke="#3E63DD" stroke-width="0.5"/>
-    <line x1="-8" y1="5" x2="8" y2="5" stroke="#3E63DD" stroke-width="0.5"/>
-    <line x1="-8" y1="10" x2="8" y2="10" stroke="#3E63DD" stroke-width="0.5"/>
+    <!-- Rocket detail lines - cleaner and more minimal -->
+    <line x1="-7" y1="-15" x2="7" y2="-15" stroke="#3E63DD" stroke-width="0.5"/>
+    <line x1="-7" y1="0" x2="7" y2="0" stroke="#3E63DD" stroke-width="0.5"/>
     
-    <!-- SpaceX-style grid fins -->
-    <path d="M-8,-15 L-14,-10 L-14,-20 Z" fill="#3E63DD"/>
-    <path d="M8,-15 L14,-10 L14,-20 Z" fill="#3E63DD"/>
+    <!-- SpaceX-style grid fins - more angular and precise -->
+    <path d="M-7,-10 L-13,-5 L-13,-15 Z" fill="#3E63DD"/>
+    <path d="M7,-10 L13,-5 L13,-15 Z" fill="#3E63DD"/>
     
-    <!-- Rocket engine section -->
-    <path d="M-4,20 L4,20 L4,22 L-4,22 Z" fill="#3E63DD"/>
+    <!-- Rocket engine section - more detailed -->
+    <path d="M-3,17 L3,17 L3.5,20 L-3.5,20 Z" fill="#3E63DD"/>
     
-    <!-- Engine details -->
-    <circle cx="-2" cy="21" r="1" fill="#0F172A"/>
-    <circle cx="2" cy="21" r="1" fill="#0F172A"/>
+    <!-- Engine nozzle -->
+    <path d="M-2,20 L2,20 L3,22 L-3,22 Z" fill="#0F172A"/>
     
-    <!-- Falcon 9 style flame -->
-    <path d="M-3,22 C-4,25 -4,35 0,40 C4,35 4,25 3,22 Z" fill="url(#flameGradient)"/>
+    <!-- SpaceX-style flame -->
+    <path d="M-2.5,22 C-3,26 -2.5,32 0,40 C2.5,32 3,26 2.5,22 Z" fill="url(#flameGradient)"/>
     
-    <!-- Flight path -->
-    <path d="M-20,-30 C-15,-15 -10,-5 0,0 C10,5 15,15 20,30" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0.3" stroke-dasharray="2 2" fill="none"/>
+    <!-- Subtle glow effect around the flame -->
+    <ellipse cx="0" cy="28" rx="5" ry="8" fill="#FF5470" opacity="0.15"/>
+    
+    <!-- Flight path - more elegant curve -->
+    <path d="M-25,-20 C-15,-10 -5,0 0,5 C5,10 15,20 25,30" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0.3" stroke-dasharray="2 2" fill="none"/>
   </g>
   
-  <!-- Text "COHETE LAB" -->
-  <text x="110" y="60" font-family="Arial, sans-serif" font-size="30" font-weight="800" fill="#0F172A">COHETE LAB</text>
+  <!-- Text "COHETE LAB" - bolder and more spacious like SpaceX font -->
+  <text x="110" y="58" font-family="Arial, sans-serif" font-size="28" font-weight="900" letter-spacing="1" fill="#0F172A">COHETE LAB</text>
 </svg>
