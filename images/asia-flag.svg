@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100" height="75" viewBox="0 0 100 75" xmlns="http://www.w3.org/2000/svg">
+    <!-- 일본 국기 -->
+    <rect width="100" height="75" fill="#FFFFFF"/>
+    <circle cx="50" cy="37.5" r="18" fill="#BC002D"/>
+    
+    <!-- 중국 스타일 별무늬 -->
+    <g fill="#FFDE00" transform="translate(12, 12) scale(0.2)">
+        <polygon points="0,-20 5.88,-6.18 19.02,-6.18 8.56,2.36 14.44,16.18 0,7.64 -14.44,16.18 -8.56,2.36 -19.02,-6.18 -5.88,-6.18" />
+    </g>
+    
+    <!-- 인도 스타일 차크라 -->
+    <g fill="#000080" transform="translate(85, 12) scale(0.15)">
+        <circle cx="0" cy="0" r="20" fill="none" stroke="#000080" stroke-width="2"/>
+        <path d="M 0,0 L 0,-20 M 0,0 L 14.14,-14.14 M 0,0 L 20,0 M 0,0 L 14.14,14.14 M 0,0 L 0,20 M 0,0 L -14.14,14.14 M 0,0 L -20,0 M 0,0 L -14.14,-14.14" stroke="#000080" stroke-width="2"/>
+    </g>
+    
+    <!-- 태국 스타일 삼색 -->
+    <g transform="translate(12, 60)">
+        <rect width="25" height="3" fill="#ED1C24"/>
+        <rect width="25" height="3" y="4" fill="#FFFFFF"/>
+        <rect width="25" height="3" y="8" fill="#0039A6"/>
+    </g>
+    
+    <!-- 필리핀 스타일 삼각형 -->
+    <g transform="translate(85, 60)">
+        <polygon points="0,0 -8,8 0,8" fill="#FCD116"/>
+    </g>
+</svg>
