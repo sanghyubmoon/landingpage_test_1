@@ -109,12 +109,14 @@
     .earth {
       width: 300px;
       height: 300px;
-      background-image: url('https://i.imgur.com/oWz2Mke.png');
       background-size: cover;
       border-radius: 50%;
       box-shadow: 0 0 30px rgba(29, 108, 223, 0.4), inset 0 0 30px rgba(29, 108, 223, 0.2);
       animation: rotate 60s linear infinite;
       position: relative;
+      background-color: #1d6cdf;
+      background-image: url('images/earth-bg.png');
+      /* 이미지 로드 실패 시 기본 색상 표시 */
     }
 
     @keyframes rotate {
@@ -163,6 +165,13 @@
       border-radius: 50%;
       z-index: 5;
       box-shadow: 0 0 10px #ff4c4c;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .marker:hover {
+      transform: scale(1.5);
+      box-shadow: 0 0 15px #ff4c4c;
     }
 
     .marker.korea {
@@ -394,10 +403,32 @@
       max-width: 700px;
       margin: 0 auto 40px;
     }
+
+    /* 홈 버튼 추가 */
+    .home-link {
+      display: inline-block;
+      margin-bottom: 20px;
+      color: #3c67e3;
+      text-decoration: none;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .home-link:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    .home-link i {
+      margin-right: 8px;
+    }
   </style>
 </head>
 <body>
   <div class="container">
+    <!-- 홈 링크 -->
+    <a href="index.html" class="home-link"><i class="fas fa-arrow-left"></i> 홈으로 돌아가기</a>
+    
     <!-- 상단 탭 -->
     <div class="tabs-top">
       <div class="tab-top active" onclick="changeTab('top', 0)">한국 → 해외 진출</div>
@@ -429,7 +460,7 @@
     <!-- 국가별 정보 섹션 -->
     <div id="koreaInfo" class="country-info">
       <div class="country-header">
-        <img src="https://raw.githubusercontent.com/sanghyubmoon/landingpage_test_1/main/images/korea-flag.png" alt="대한민국 국기" class="country-flag">
+        <img src="images/korea-flag.png" alt="대한민국 국기" class="country-flag">
         <div class="country-title">
           <h3>대한민국</h3>
           <p>아시아 주요 시장</p>
@@ -457,7 +488,7 @@
 
     <div id="usaInfo" class="country-info">
       <div class="country-header">
-        <img src="https://raw.githubusercontent.com/sanghyubmoon/landingpage_test_1/main/images/usa-flag.png" alt="미국 국기" class="country-flag">
+        <img src="images/usa-flag.png" alt="미국 국기" class="country-flag">
         <div class="country-title">
           <h3>미국</h3>
           <p>북미 최대 시장</p>
@@ -485,7 +516,7 @@
 
     <div id="europeInfo" class="country-info">
       <div class="country-header">
-        <img src="https://raw.githubusercontent.com/sanghyubmoon/landingpage_test_1/main/images/eu-flag.png" alt="유럽 연합 국기" class="country-flag">
+        <img src="images/eu-flag.png" alt="유럽 연합 국기" class="country-flag">
         <div class="country-title">
           <h3>유럽</h3>
           <p>다국적 시장</p>
@@ -513,7 +544,7 @@
 
     <div id="asiaInfo" class="country-info">
       <div class="country-header">
-        <img src="https://raw.githubusercontent.com/sanghyubmoon/landingpage_test_1/main/images/asia-flag.png" alt="아시아 지역" class="country-flag">
+        <img src="images/asia-flag.png" alt="아시아 지역" class="country-flag">
         <div class="country-title">
           <h3>동남아시아</h3>
           <p>급성장 시장</p>
@@ -690,20 +721,28 @@
       }
     }
     
+    // 이미지 로드 에러 처리
+    function handleImageError() {
+      const earthElement = document.getElementById('earth');
+      // 이미지 로드 실패 시 기본 색상 적용
+      earthElement.style.backgroundImage = 'none';
+      earthElement.style.backgroundColor = '#1d6cdf';
+    }
+    
     // 페이지 로드 완료 후 실행
     window.addEventListener('load', () => {
-      // 고해상도 지구 이미지 설정
+      // 지구 이미지 설정
       const earthElement = document.getElementById('earth');
-      // 실제 지구 이미지 URL로 교체
-      // 여기서는 기본 이미지를 CSS에 직접 설정했으므로 필요 없을 수 있음
-      // earthElement.style.backgroundImage = "url('https://i.imgur.com/oWz2Mke.png')";
+      
+      // 이미지 로드 에러 처리
+      earthElement.onerror = handleImageError;
       
       createStars();
       setTimeout(createConnections, 500); // 500ms 후 연결선 생성
 
       // 버튼 이벤트 리스너 추가
       document.getElementById('exportBtn').addEventListener('click', function() {
-        window.location.href = '#contact'; // 문의하기 섹션으로 이동
+        window.location.href = 'index.html#contact'; // 문의하기 섹션으로 이동
       });
 
       document.getElementById('influencerBtn').addEventListener('click', function() {
