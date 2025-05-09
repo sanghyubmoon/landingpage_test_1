@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>인사이트 리포트 - 코히트랩</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        /* 인사이트 리포트 페이지 추가 스타일 */
+        .page-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 6rem 0 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .page-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .page-description {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .report-hero {
+            padding: 2rem 0 4rem;
+            background-color: var(--light-background);
+            margin-bottom: 4rem;
+        }
+
+        .featured-report {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            display: flex;
+            flex-direction: row;
+        }
+
+        .featured-report-img {
+            flex: 1;
+            min-height: 400px;
+            overflow: hidden;
+        }
+
+        .featured-report-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .featured-report-content {
+            flex: 1;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .report-category {
+            display: inline-block;
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .featured-report-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        .featured-report-desc {
+            font-size: 1.1rem;
+            color: var(--light-text);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .report-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .report-btn i {
+            margin-left: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+
+        .report-btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .report-btn:hover i {
+            transform: translateX(5px);
+        }
+
+        .reports-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .report-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .report-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .report-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .report-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .report-card:hover .report-image img {
+            transform: scale(1.05);
+        }
+
+        .report-content {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .report-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .report-excerpt {
+            color: var(--light-text);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .report-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+
+        .report-date {
+            color: var(--light-text);
+            font-size: 0.9rem;
+        }
+
+        .report-stats {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .report-stat {
+            display: flex;
+            align-items: center;
+            color: var(--light-text);
+            font-size: 0.9rem;
+        }
+
+        .report-stat i {
+            margin-right: 0.3rem;
+            color: var(--primary-color);
+        }
+
+        .category-filters {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .category-filter {
+            background-color: white;
+            color: var(--text-color);
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+
+        .category-filter.active, .category-filter:hover {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .report-cta {
+            background-color: var(--light-background);
+            padding: 4rem 0;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .report-cta-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .report-cta-desc {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+            color: var(--light-text);
+            line-height: 1.6;
+        }
+
+        .newsletter-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            min-width: 300px;
+            padding: 1rem 1.5rem;
+            border-radius: 30px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            font-size: 1rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .newsletter-form input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px var(--primary-light);
+        }
+
+        .newsletter-form button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            padding: 1rem 2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+
+        .newsletter-form button:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 992px) {
+            .featured-report {
+                flex-direction: column;
+            }
+
+            .featured-report-img {
+                height: 300px;
+            }
+
+            .featured-report-content {
+                padding: 2rem;
+            }
+
+            .featured-report-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .reports-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .page-title {
+                font-size: 2.2rem;
+            }
+
+            .featured-report-title {
+                font-size: 1.6rem;
+            }
+
+            .report-cta-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 헤더 -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <img src="https://raw.githubusercontent.com/sanghyubmoon/landingpage_test_1/main/images/core-creator-logo.svg" alt="COHETE LAB Logo" class="logo-img">
+                COHETE LAB
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html#core-rank">CORE-RANK</a></li>
+                    <li><a href="index.html#features">주요 기능</a></li>
+                    <li><a href="index.html#benefits">비즈니스 혜택</a></li>
+                    <li><a href="index.html#pricing">요금제</a></li>
+                    <li><a href="index.html#global">글로벌 서비스</a></li>
+                    <li><a href="about.html">회사 소개</a></li>
+                    <li><a href="index.html#contact">문의하기</a></li>
+                </ul>
+            </nav>
+            <button class="cta-button header-cta">무료 체험 신청</button>
+            <div class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- 페이지 헤더 -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">인사이트 리포트</h1>
+            <p class="page-description">인플루언서 마케팅 산업의 최신 트렌드와 심층 분석을 통한 전략적 인사이트</p>
+        </div>
+    </section>
+
+    <!-- 대표 리포트 -->
+    <section class="report-hero">
+        <div class="container">
+            <div class="featured-report">
+                <div class="featured-report-img">
+                    <img src="images/core-rank-analytics.svg" alt="인사이트 리포트 이미지">
+                </div>
+                <div class="featured-report-content">
+                    <span class="report-category">2025 트렌드 리포트</span>
+                    <h2 class="featured-report-title">인플루언서 마케팅의 미래: 2025년 글로벌 트렌드와 전략</h2>
+                    <p class="featured-report-desc">AI, 데이터 분석, 소셜 커머스 통합 등 인플루언서 마케팅의 진화 방향을 탐색하는 포괄적인 리포트입니다. 50개 이상의 브랜드 사례와 1,000명 이상의 인플루언서 데이터를 분석한 결과를 확인하세요.</p>
+                    <button class="report-btn">무료 리포트 다운로드 <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 카테고리 필터 -->
+    <section class="report-filter">
+        <div class="container">
+            <div class="category-filters">
+                <div class="category-filter active">전체</div>
+                <div class="category-filter">트렌드 분석</div>
+                <div class="category-filter">산업 벤치마크</div>
+                <div class="category-filter">글로벌 시장</div>
+                <div class="category-filter">소비자 행동</div>
+                <div class="category-filter">ROI 분석</div>
+                <div class="category-filter">테크놀로지</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 리포트 그리드 -->
+    <section class="reports-section">
+        <div class="container">
+            <div class="reports-grid">
+                <!-- 리포트 1 -->
+                <div class="report-card">
+                    <div class="report-image">
+                        <img src="images/core-rank-campaign.svg" alt="리포트 이미지">
+                    </div>
+                    <div class="report-content">
+                        <span class="report-category">산업 벤치마크</span>
+                        <h3 class="report-title">2025년 업종별 인플루언서 마케팅 벤치마크</h3>
+                        <p class="report-excerpt">화장품, 패션, 푸드, 테크 등 10개 주요 산업의 인플루언서 마케팅 KPI 벤치마크와 성공 사례를 분석합니다.</p>
+                        <div class="report-meta">
+                            <div class="report-date">2025.04.15</div>
+                            <div class="report-stats">
+                                <span class="report-stat"><i class="fas fa-download"></i> 1,245</span>
+                                <span class="report-stat"><i class="fas fa-eye"></i> 5,678</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 리포트 2 -->
+                <div class="report-card">
+                    <div class="report-image">
+                        <img src="images/core-rank-search.svg" alt="리포트 이미지">
+                    </div>
+                    <div class="report-content">
+                        <span class="report-category">ROI 분석</span>
+                        <h3 class="report-title">인플루언서 마케팅 ROI 최적화 가이드</h3>
+                        <p class="report-excerpt">실제 데이터를 기반으로 인플루언서 마케팅의 ROI를 극대화하는 전략과 측정 방법을 제시합니다.</p>
+                        <div class="report-meta">
+                            <div class="report-date">2025.03.22</div>
+                            <div class="report-stats">
+                                <span class="report-stat"><i class="fas fa-download"></i> 982</span>
+                                <span class="report-stat"><i class="fas fa-eye"></i> 4,312</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 리포트 3 -->
+                <div class="report-card">
+                    <div class="report-image">
+                        <img src="images/global-outbound.svg" alt="리포트 이미지">
+                    </div>
+                    <div class="report-content">
+                        <span class="report-category">글로벌 시장</span>
+                        <h3 class="report-title">아시아 인플루언서 마케팅 시장 보고서</h3>
+                        <p class="report-excerpt">한국, 일본, 중국, 동남아 등 아시아 주요 국가의 인플루언서 마케팅 트렌드와 소비자 특성을 분석합니다.</p>
+                        <div class="report-meta">
+                            <div class="report-date">2025.03.05</div>
+                            <div class="report-stats">
+                                <span class="report-stat"><i class="fas fa-download"></i> 857</span>
+                                <span class="report-stat"><i class="fas fa-eye"></i> 3,961</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 리포트 4 -->
+                <div class="report-card">
+                    <div class="report-image">
+                        <img src="images/global-inbound.svg" alt="리포트 이미지">
+                    </div>
+                    <div class="report-content">
+                        <span class="report-category">소비자 행동</span>
+                        <h3 class="report-title">Z세대 인플루언서 소비 행동 보고서</h3>
+                        <p class="report-excerpt">10대 후반~20대 중반 소비자들의 인플루언서 콘텐츠 소비 패턴과 구매 의사결정 과정을 심층 분석합니다.</p>
+                        <div class="report-meta">
+                            <div class="report-date">2025.02.18</div>
+                            <div class="report-stats">
+                                <span class="report-stat"><i class="fas fa-download"></i> 1,104</span>
+                                <span class="report-stat"><i class="fas fa-eye"></i> 5,230</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 리포트 5 -->
+                <div class="report-card">
+                    <div class="report-image">
+                        <img src="images/core-rank-dashboard.svg" alt="리포트 이미지">
+                    </div>
+                    <div class="report-content">
+                        <span class="report-category">테크놀로지</span>
+                        <h3 class="report-title">AI와 데이터 분석이 인플루언서 마케팅을 변화시키는 방법</h3>
+                        <p class="report-excerpt">빅데이터, AI, 머신러닝 기술이 인플루언서 검색, 매칭, 성과 예측 등 마케팅 전 과정을 혁신하는 사례를 소개합니다.</p>
+                        <div class="report-meta">
+                            <div class="report-date">2025.02.01</div>
+                            <div class="report-stats">
+                                <span class="report-stat"><i class="fas fa-download"></i> 763</span>
+                                <span class="report-stat"><i class="fas fa-eye"></i> 3,412</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 리포트 6 -->
+                <div class="report-card">
+                    <div class="report-image">
+                        <img src="images/core-rank-mobile.svg" alt="리포트 이미지">
+                    </div>
+                    <div class="report-content">
+                        <span class="report-category">트렌드 분석</span>
+                        <h3 class="report-title">숏폼 콘텐츠의 부상과 인플루언서 마케팅 전략</h3>
+                        <p class="report-excerpt">틱톡, 인스타그램 릴스, 유튜브 쇼츠 등 숏폼 플랫폼의 성장과 이에 최적화된 인플루언서 협업 전략을 제시합니다.</p>
+                        <div class="report-meta">
+                            <div class="report-date">2025.01.15</div>
+                            <div class="report-stats">
+                                <span class="report-stat"><i class="fas fa-download"></i> 891</span>
+                                <span class="report-stat"><i class="fas fa-eye"></i> 4,105</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 뉴스레터 구독 CTA -->
+    <section class="report-cta">
+        <div class="container">
+            <h2 class="report-cta-title">최신 인사이트를 놓치지 마세요</h2>
+            <p class="report-cta-desc">인플루언서 마케팅 트렌드, 데이터 분석, 성공 사례를 담은 주간 뉴스레터를 구독하세요. 모든 신규 리포트와 인사이트를 가장 먼저 확인할 수 있습니다.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="이메일 주소 입력" required>
+                <button type="submit">뉴스레터 구독하기</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">COHETE LAB</div>
+                    <p class="footer-description">데이터 기반 인플루언서 마케팅의 새로운 기준, CORE-RANK</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h3 class="footer-heading">솔루션</h3>
+                        <ul>
+                            <li><a href="index.html#core-rank">CORE-RANK</a></li>
+                            <li><a href="index.html#features">주요 기능</a></li>
+                            <li><a href="index.html#pricing">요금제</a></li>
+                            <li><a href="index.html#global">글로벌 솔루션</a></li>
+                            <li><a href="international.html">국제 진출</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3 class="footer-heading">회사</h3>
+                        <ul>
+                            <li><a href="about.html">회사 소개</a></li>
+                            <li><a href="team.html">팀 소개</a></li>
+                            <li><a href="#">채용 정보</a></li>
+                            <li><a href="#">파트너십</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3 class="footer-heading">리소스</h3>
+                        <ul>
+                            <li><a href="blog.html">블로그</a></li>
+                            <li><a href="insights.html">인사이트 리포트</a></li>
+                            <li><a href="#">웨비나</a></li>
+                            <li><a href="help.html">도움말 센터</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 COHETE LAB. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">개인정보처리방침</a>
+                    <a href="#">이용약관</a>
+                    <a href="#">쿠키 정책</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // 카테고리 필터 기능
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.category-filter');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // 활성화된 필터 변경
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // 실제 구현에서는 여기에 필터링 로직 추가
+                    const category = this.textContent;
+                    console.log(`카테고리 필터링: ${category}`);
+                    
+                    // 간단한 에니메이션 효과
+                    const reportCards = document.querySelectorAll('.report-card');
+                    reportCards.forEach(card => {
+                        card.style.opacity = '0.5';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                        }, 300);
+                    });
+                });
+            });
+            
+            // 뉴스레터 폼 제출 이벤트
+            const newsletterForm = document.querySelector('.newsletter-form');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const email = this.querySelector('input[type="email"]').value;
+                    alert(`${email} 주소로 뉴스레터 구독이 완료되었습니다. 감사합니다!`);
+                    this.reset();
+                });
+            }
+            
+            // 리포트 다운로드 버튼
+            const downloadBtn = document.querySelector('.report-btn');
+            if (downloadBtn) {
+                downloadBtn.addEventListener('click', function() {
+                    alert('리포트 다운로드가 시작됩니다. 실제 서비스에서는 다운로드 또는 이메일 입력 폼이 표시됩니다.');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
