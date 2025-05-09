@@ -1,0 +1,50 @@
+<svg width="800" height="500" viewBox="0 0 800 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="800" height="500" rx="8" fill="white"/>
+<rect x="40" y="40" width="720" height="60" rx="8" fill="#F8FAFF"/>
+<rect x="60" y="55" width="600" height="30" rx="15" fill="white" stroke="#E5E7EB" stroke-width="2"/>
+<rect x="670" y="55" width="70" height="30" rx="15" fill="#22C55E"/>
+<text x="690" y="75" fill="white" font-family="Arial" font-weight="bold" font-size="14">검색</text>
+<rect x="40" y="120" width="720" height="60" rx="8" fill="white" stroke="#E5E7EB" stroke-width="2"/>
+<rect x="60" y="140" width="100" height="20" rx="10" fill="#F3F4F6"/>
+<text x="80" y="155" fill="#6B7280" font-family="Arial" font-size="12">인스타그램</text>
+<rect x="170" y="140" width="100" height="20" rx="10" fill="#F3F4F6"/>
+<text x="190" y="155" fill="#6B7280" font-family="Arial" font-size="12">틱톡</text>
+<rect x="280" y="140" width="100" height="20" rx="10" fill="#3E63DD"/>
+<text x="300" y="155" fill="white" font-family="Arial" font-size="12">유튜브</text>
+<rect x="390" y="140" width="100" height="20" rx="10" fill="#F3F4F6"/>
+<text x="410" y="155" fill="#6B7280" font-family="Arial" font-size="12">트위터</text>
+<rect x="40" y="200" width="220" height="280" rx="8" fill="white" stroke="#E5E7EB" stroke-width="2"/>
+<text x="60" y="230" fill="#0F172A" font-family="Arial" font-weight="bold" font-size="16">필터</text>
+<rect x="60" y="250" width="180" height="1" fill="#E5E7EB"/>
+<text x="60" y="280" fill="#0F172A" font-family="Arial" font-size="14">팔로워 수</text>
+<rect x="60" y="290" width="180" height="40" rx="4" fill="#F8FAFF"/>
+<text x="60" y="350" fill="#0F172A" font-family="Arial" font-size="14">카테고리</text>
+<rect x="60" y="360" width="180" height="40" rx="4" fill="#F8FAFF"/>
+<text x="60" y="420" fill="#0F172A" font-family="Arial" font-size="14">참여율</text>
+<rect x="60" y="430" width="180" height="40" rx="4" fill="#F8FAFF"/>
+<rect x="280" y="200" width="480" height="280" rx="8" fill="white" stroke="#E5E7EB" stroke-width="2"/>
+<rect x="300" y="220" width="440" height="60" rx="8" fill="#F8FAFF"/>
+<circle cx="330" cy="250" r="20" fill="white" stroke="#E5E7EB" stroke-width="2"/>
+<rect x="360" y="240" width="200" height="10" rx="2" fill="#0F172A"/>
+<rect x="360" y="260" width="120" height="8" rx="2" fill="#6B7280"/>
+<rect x="600" y="240" width="60" height="20" rx="10" fill="#22C55E"/>
+<text x="615" y="255" fill="white" font-family="Arial" font-weight="bold" font-size="12">32%</text>
+<rect x="670" y="240" width="50" height="20" rx="10" fill="#F3F4F6"/>
+<text x="685" y="255" fill="#6B7280" font-family="Arial" font-size="12">7.2</text>
+<rect x="300" y="300" width="440" height="60" rx="8" fill="#F8FAFF"/>
+<circle cx="330" cy="330" r="20" fill="white" stroke="#E5E7EB" stroke-width="2"/>
+<rect x="360" y="320" width="200" height="10" rx="2" fill="#0F172A"/>
+<rect x="360" y="340" width="120" height="8" rx="2" fill="#6B7280"/>
+<rect x="600" y="320" width="60" height="20" rx="10" fill="#22C55E"/>
+<text x="615" y="335" fill="white" font-family="Arial" font-weight="bold" font-size="12">28%</text>
+<rect x="670" y="320" width="50" height="20" rx="10" fill="#F3F4F6"/>
+<text x="685" y="335" fill="#6B7280" font-family="Arial" font-size="12">6.8</text>
+<rect x="300" y="380" width="440" height="60" rx="8" fill="#F8FAFF"/>
+<circle cx="330" cy="410" r="20" fill="white" stroke="#E5E7EB" stroke-width="2"/>
+<rect x="360" y="400" width="200" height="10" rx="2" fill="#0F172A"/>
+<rect x="360" y="420" width="120" height="8" rx="2" fill="#6B7280"/>
+<rect x="600" y="400" width="60" height="20" rx="10" fill="#22C55E"/>
+<text x="615" y="415" fill="white" font-family="Arial" font-weight="bold" font-size="12">25%</text>
+<rect x="670" y="400" width="50" height="20" rx="10" fill="#F3F4F6"/>
+<text x="685" y="415" fill="#6B7280" font-family="Arial" font-size="12">5.9</text>
+</svg>

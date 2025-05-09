@@ -1,0 +1,39 @@
+<svg width="320" height="640" viewBox="0 0 320 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="320" height="640" rx="20" fill="#F8FAFF"/>
+<rect y="0" width="320" height="40" fill="#0F172A"/>
+<circle cx="20" cy="20" r="8" fill="white"/>
+<rect x="250" y="14" width="20" height="12" rx="6" fill="white"/>
+<rect x="280" y="10" width="24" height="20" rx="2" fill="white"/>
+<rect y="40" width="320" height="60" fill="#0F172A"/>
+<text x="20" y="75" fill="white" font-family="Arial" font-weight="bold" font-size="18">CORE-RANK</text>
+<rect x="220" y="55" width="80" height="30" rx="15" fill="#22C55E"/>
+<text x="240" y="75" fill="white" font-family="Arial" font-weight="bold" font-size="14">검색</text>
+<rect x="20" y="120" width="280" height="50" rx="8" fill="white" stroke="#E5E7EB" stroke-width="2"/>
+<text x="40" y="150" fill="#6B7280" font-family="Arial" font-size="14">인플루언서 검색...</text>
+<rect x="20" y="190" width="280" height="120" rx="8" fill="white" stroke="#E5E7EB" stroke-width="2"/>
+<text x="40" y="220" fill="#0F172A" font-family="Arial" font-weight="bold" font-size="16">추천 인플루언서</text>
+<rect x="40" y="240" width="240" height="50" rx="8" fill="#F8FAFF"/>
+<circle cx="65" cy="265" r="15" fill="white" stroke="#E5E7EB" stroke-width="2"/>
+<text x="90" y="270" fill="#0F172A" font-family="Arial" font-size="14">김영희</text>
+<rect x="200" y="255" width="60" height="20" rx="10" fill="#22C55E"/>
+<text x="215" y="270" fill="white" font-family="Arial" font-weight="bold" font-size="12">32%</text>
+<rect x="20" y="330" width="135" height="180" rx="8" fill="white" stroke="#E5E7EB" stroke-width="2"/>
+<text x="40" y="360" fill="#0F172A" font-family="Arial" font-weight="bold" font-size="16">활성 캠페인</text>
+<text x="40" y="390" fill="#6B7280" font-family="Arial" font-size="14">3</text>
+<circle cx="80" cy="440" r="40" stroke="#22C55E" stroke-width="10"/>
+<text x="73" y="450" fill="#0F172A" font-family="Arial" font-weight="bold" font-size="24">3</text>
+<rect x="165" y="330" width="135" height="180" rx="8" fill="white" stroke="#E5E7EB" stroke-width="2"/>
+<text x="185" y="360" fill="#0F172A" font-family="Arial" font-weight="bold" font-size="16">대기 캠페인</text>
+<text x="185" y="390" fill="#6B7280" font-family="Arial" font-size="14">2</text>
+<circle cx="225" cy="440" r="40" stroke="#F59E0B" stroke-width="10"/>
+<text x="218" y="450" fill="#0F172A" font-family="Arial" font-weight="bold" font-size="24">2</text>
+<rect y="600" width="320" height="40" fill="#0F172A"/>
+<rect x="20" y="610" width="60" height="20" rx="4" fill="#22C55E"/>
+<text x="30" y="625" fill="white" font-family="Arial" font-weight="bold" font-size="12">검색</text>
+<rect x="100" y="610" width="60" height="20" rx="4" fill="white"/>
+<text x="110" y="625" fill="#0F172A" font-family="Arial" font-weight="bold" font-size="12">분석</text>
+<rect x="180" y="610" width="60" height="20" rx="4" fill="white"/>
+<text x="190" y="625" fill="#0F172A" font-family="Arial" font-weight="bold" font-size="12">캠페인</text>
+<rect x="260" y="610" width="60" height="20" rx="4" fill="white"/>
+<text x="270" y="625" fill="#0F172A" font-family="Arial" font-weight="bold" font-size="12">설정</text>
+</svg>

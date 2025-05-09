@@ -1,0 +1,64 @@
+<svg width="800" height="500" viewBox="0 0 800 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="800" height="500" rx="8" fill="white"/>
+<rect x="40" y="40" width="720" height="60" rx="8" fill="#0F172A"/>
+<text x="70" y="75" fill="white" font-family="Arial" font-weight="bold" font-size="18">인플루언서 성과 분석</text>
+<circle cx="700" cy="70" r="20" fill="white"/>
+<circle cx="700" cy="70" r="15" fill="#22C55E"/>
+<rect x="40" y="120" width="350" height="180" rx="8" fill="white" stroke="#E5E7EB" stroke-width="2"/>
+<text x="60" y="150" fill="#0F172A" font-family="Arial" font-weight="bold" font-size="16">참여율 트렌드</text>
+<rect x="60" y="170" width="310" height="1" fill="#E5E7EB"/>
+<path d="M60 250 L370 250" stroke="#E5E7EB" stroke-width="1"/>
+<path d="M60 220 L370 220" stroke="#E5E7EB" stroke-width="1" stroke-dasharray="4 4"/>
+<path d="M60 280 L370 280" stroke="#E5E7EB" stroke-width="1"/>
+<path d="M90 280 L90 190" stroke="#E5E7EB" stroke-width="1"/>
+<path d="M150 280 L150 190" stroke="#E5E7EB" stroke-width="1"/>
+<path d="M210 280 L210 190" stroke="#E5E7EB" stroke-width="1"/>
+<path d="M270 280 L270 190" stroke="#E5E7EB" stroke-width="1"/>
+<path d="M330 280 L330 190" stroke="#E5E7EB" stroke-width="1"/>
+<path d="M90 240 L150 230 L210 260 L270 210 L330 220" stroke="#3E63DD" stroke-width="2"/>
+<circle cx="90" cy="240" r="4" fill="#3E63DD"/>
+<circle cx="150" cy="230" r="4" fill="#3E63DD"/>
+<circle cx="210" cy="260" r="4" fill="#3E63DD"/>
+<circle cx="270" cy="210" r="4" fill="#3E63DD"/>
+<circle cx="330" cy="220" r="4" fill="#3E63DD"/>
+<rect x="410" y="120" width="350" height="180" rx="8" fill="white" stroke="#E5E7EB" stroke-width="2"/>
+<text x="430" y="150" fill="#0F172A" font-family="Arial" font-weight="bold" font-size="16">인구통계</text>
+<rect x="430" y="170" width="310" height="1" fill="#E5E7EB"/>
+<circle cx="520" cy="230" r="60" fill="none" stroke="#E5E7EB" stroke-width="1"/>
+<path d="M520 230 L520 170 A60 60 0 0 1 572 255 Z" fill="#3E63DD"/>
+<path d="M520 230 L572 255 A60 60 0 0 1 520 290 Z" fill="#22C55E"/>
+<path d="M520 230 L520 290 A60 60 0 0 1 468 255 Z" fill="#6B7CFF"/>
+<path d="M520 230 L468 255 A60 60 0 0 1 520 170 Z" fill="#FF5470"/>
+<rect x="600" y="200" width="40" height="10" rx="2" fill="#3E63DD"/>
+<text x="650" y="210" fill="#0F172A" font-family="Arial" font-size="12">18-24세</text>
+<rect x="600" y="220" width="40" height="10" rx="2" fill="#22C55E"/>
+<text x="650" y="230" fill="#0F172A" font-family="Arial" font-size="12">25-34세</text>
+<rect x="600" y="240" width="40" height="10" rx="2" fill="#6B7CFF"/>
+<text x="650" y="250" fill="#0F172A" font-family="Arial" font-size="12">35-44세</text>
+<rect x="600" y="260" width="40" height="10" rx="2" fill="#FF5470"/>
+<text x="650" y="270" fill="#0F172A" font-family="Arial" font-size="12">45세+</text>
+<rect x="40" y="320" width="350" height="160" rx="8" fill="white" stroke="#E5E7EB" stroke-width="2"/>
+<text x="60" y="350" fill="#0F172A" font-family="Arial" font-weight="bold" font-size="16">콘텐츠 성과</text>
+<rect x="60" y="370" width="310" height="1" fill="#E5E7EB"/>
+<rect x="60" y="390" width="270" height="20" rx="4" fill="#F3F4F6"/>
+<rect x="60" y="390" width="200" height="20" rx="4" fill="#3E63DD"/>
+<text x="340" y="405" fill="#0F172A" font-family="Arial" font-size="14">좋아요</text>
+<rect x="60" y="420" width="270" height="20" rx="4" fill="#F3F4F6"/>
+<rect x="60" y="420" width="130" height="20" rx="4" fill="#22C55E"/>
+<text x="340" y="435" fill="#0F172A" font-family="Arial" font-size="14">댓글</text>
+<rect x="60" y="450" width="270" height="20" rx="4" fill="#F3F4F6"/>
+<rect x="60" y="450" width="70" height="20" rx="4" fill="#6B7CFF"/>
+<text x="340" y="465" fill="#0F172A" font-family="Arial" font-size="14">공유</text>
+<rect x="410" y="320" width="350" height="160" rx="8" fill="white" stroke="#E5E7EB" stroke-width="2"/>
+<text x="430" y="350" fill="#0F172A" font-family="Arial" font-weight="bold" font-size="16">지역별 분포</text>
+<rect x="430" y="370" width="310" height="1" fill="#E5E7EB"/>
+<rect x="430" y="390" width="200" height="20" rx="4" fill="#0F172A"/>
+<text x="450" y="405" fill="white" font-family="Arial" font-size="14">서울</text>
+<text x="650" y="405" fill="#0F172A" font-family="Arial" font-size="14">45%</text>
+<rect x="430" y="420" width="150" height="20" rx="4" fill="#0F172A"/>
+<text x="450" y="435" fill="white" font-family="Arial" font-size="14">부산</text>
+<text x="650" y="435" fill="#0F172A" font-family="Arial" font-size="14">25%</text>
+<rect x="430" y="450" width="100" height="20" rx="4" fill="#0F172A"/>
+<text x="450" y="465" fill="white" font-family="Arial" font-size="14">인천</text>
+<text x="650" y="465" fill="#0F172A" font-family="Arial" font-size="14">15%</text>
+</svg>
