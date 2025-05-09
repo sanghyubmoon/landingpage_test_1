@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회사 소개 - 코히트랩</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        /* 회사 소개 페이지 추가 스타일 */
+        .page-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 6rem 0 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .page-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .page-description {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* 회사 소개 스타일 */
+        .intro-section {
+            padding: 3rem 0 5rem;
+        }
+
+        .intro-content {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .intro-text {
+            flex: 1;
+        }
+
+        .intro-heading {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+        }
+
+        .intro-subheading {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .intro-description {
+            font-size: 1.1rem;
+            color: var(--light-text);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .intro-stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            color: var(--light-text);
+        }
+
+        .intro-image {
+            flex: 1;
+            position: relative;
+            max-width: 500px;
+        }
+
+        .intro-image img {
+            width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .intro-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 100%;
+            height: 100%;
+            border: 3px solid var(--primary-color);
+            border-radius: var(--border-radius);
+            z-index: -1;
+        }
+
+        /* 미션 및 비전 스타일 */
+        .mission-section {
+            background-color: var(--light-background);
+            padding: 5rem 0;
+            margin: 3rem 0;
+        }
+
+        .mission-content {
+            display: flex;
+            gap: 3rem;
+        }
+
+        .mission-card {
+            flex: 1;
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 3rem;
+            box-shadow: var(--box-shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .mission-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .mission-icon {
+            width: 80px;
+            height: 80px;
+            background-color: var(--primary-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            color: var(--primary-color);
+            font-size: 2.5rem;
+        }
+
+        .mission-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+        }
+
+        .mission-text {
+            font-size: 1.1rem;
+            color: var(--light-text);
+            line-height: 1.8;
+        }
+
+        /* 회사 역사 스타일 */
+        .history-section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--text-color);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 3px;
+            background-color: var(--primary-light);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1.5px;
+        }
+
+        .timeline-item {
+            padding: 20px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-content {
+            padding: 2rem;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-content::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            transform: rotate(45deg);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::after {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::after {
+            left: -10px;
+        }
+
+        .timeline-date {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        .timeline-text {
+            font-size: 1rem;
+            color: var(--light-text);
+            line-height: 1.6;
+        }
+
+        .timeline-point {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--primary-color);
+            border: 4px solid white;
+            border-radius: 50%;
+            top: 40px;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-point {
+            right: -14px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-point {
+            left: -14px;
+        }
+
+        /* 가치 스타일 */
+        .values-section {
+            background-color: var(--light-background);
+            padding: 5rem 0;
+            margin-bottom: 5rem;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .value-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 2.5rem;
+            box-shadow: var(--box-shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .value-icon {
+            width: 70px;
+            height: 70px;
+            background-color: var(--primary-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: var(--primary-color);
+            font-size: 2rem;
+        }
+
+        .value-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        .value-text {
+            font-size: 1rem;
+            color: var(--light-text);
+            line-height: 1.7;
+        }
+
+        /* 투자자 스타일 */
+        .investors-section {
+            padding: 5rem 0;
+        }
+
+        .investors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .investor-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--box-shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .investor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .investor-logo {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .investor-logo img {
+            max-height: 100%;
+            max-width: 100%;
+        }
+
+        .investor-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+
+        .investor-role {
+            font-size: 0.9rem;
+            color: var(--light-text);
+        }
+
+        /* CTA 스타일 */
+        .about-cta {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+            margin-bottom: 5rem;
+            border-radius: var(--border-radius);
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-text {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-button-white {
+            background-color: white;
+            color: var(--primary-color);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .cta-button-white:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .cta-button-outline {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .cta-button-outline:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        /* 미디어 쿼리 */
+        @media (max-width: 992px) {
+            .intro-content, .mission-content {
+                flex-direction: column;
+            }
+
+            .intro-image {
+                order: -1;
+                max-width: 100%;
+                margin-bottom: 2rem;
+            }
+
+            .mission-content {
+                gap: 2rem;
+            }
+
+            .timeline::after {
+                left: 40px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 80px;
+                padding-right: 0;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content::after,
+            .timeline-item:nth-child(even) .timeline-content::after {
+                left: -10px;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-point,
+            .timeline-item:nth-child(even) .timeline-point {
+                left: 31px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .intro-stats {
+                flex-direction: column;
+                gap: 1.5rem;
+                align-items: center;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .page-title, .intro-heading, .section-title, .cta-title {
+                font-size: 2rem;
+            }
+
+            .mission-title {
+                font-size: 1.5rem;
+            }
+
+            .mission-card, .timeline-content {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 헤더 -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <img src="https://raw.githubusercontent.com/sanghyubmoon/landingpage_test_1/main/images/core-creator-logo.svg" alt="COHETE LAB Logo" class="logo-img">
+                COHETE LAB
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html#core-rank">CORE-RANK</a></li>
+                    <li><a href="index.html#features">주요 기능</a></li>
+                    <li><a href="index.html#benefits">비즈니스 혜택</a></li>
+                    <li><a href="index.html#pricing">요금제</a></li>
+                    <li><a href="index.html#global">글로벌 서비스</a></li>
+                    <li><a href="about.html">회사 소개</a></li>
+                    <li><a href="index.html#contact">문의하기</a></li>
+                </ul>
+            </nav>
+            <button class="cta-button header-cta">무료 체험 신청</button>
+            <div class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- 페이지 헤더 -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">코히트랩 소개</h1>
+            <p class="page-description">데이터 기반 인플루언서 마케팅 기술의 선두주자</p>
+        </div>
+    </section>
+
+    <!-- 회사 소개 섹션 -->
+    <section class="intro-section">
+        <div class="container">
+            <div class="intro-content">
+                <div class="intro-text">
+                    <h2 class="intro-heading">인플루언서 마케팅을 위한<br>데이터 과학의 혁신</h2>
+                    <p class="intro-subheading">2020년 설립, 인플루언서 마케팅의 새로운 패러다임 구축</p>
+                    <p class="intro-description">코히트랩은 데이터 과학과 인공지능을 활용하여 인플루언서 마케팅의 불확실성과 비효율성을 해결하기 위해 설립되었습니다. 우리는 브랜드와 마케터가 객관적인 데이터를 기반으로 인플루언서를 발굴하고, 캠페인 성과를 정확하게 측정할 수 있는 혁신적인 솔루션을 개발하고 있습니다.</p>
+                    <p class="intro-description">글로벌 기업부터 스타트업까지 200개 이상의 브랜드가 코히트랩의 CORE-RANK 플랫폼을 통해 마케팅 ROI를 극대화하고 있습니다. 데이터 기반 의사결정의 힘을 활용하여 인플루언서 마케팅의 새로운 표준을 만들어 나가는 여정에 함께 하세요.</p>
+                    
+                    <div class="intro-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">200+</div>
+                            <div class="stat-label">고객사</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">50,000+</div>
+                            <div class="stat-label">인플루언서 데이터</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">5</div>
+                            <div class="stat-label">글로벌 오피스</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">85%</div>
+                            <div class="stat-label">평균 ROI 향상</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="intro-image">
+                    <img src="images/core-rank-dashboard.svg" alt="코히트랩 팀">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 미션 및 비전 섹션 -->
+    <section class="mission-section">
+        <div class="container">
+            <div class="mission-content">
+                <!-- 미션 카드 -->
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3 class="mission-title">미션</h3>
+                    <p class="mission-text">데이터 과학과 인공지능 기술을 통해 인플루언서 마케팅의 객관성과 효율성을 높이고, 브랜드와 인플루언서 모두에게 지속가능한 가치를 창출합니다.</p>
+                </div>
+                
+                <!-- 비전 카드 -->
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3 class="mission-title">비전</h3>
+                    <p class="mission-text">인플루언서 마케팅 생태계의 혁신을 주도하며, 모든 규모의 브랜드가 데이터에 기반한 마케팅 의사결정을 통해 최적의 성과를 거둘 수 있는 세상을 만듭니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 회사 역사 섹션 -->
+    <section class="history-section">
+        <div class="container">
+            <h2 class="section-title">코히트랩의 여정</h2>
+            
+            <div class="timeline">
+                <!-- 2020년 -->
+                <div class="timeline-item">
+                    <div class="timeline-point"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2020년</div>
+                        <h3 class="timeline-title">회사 설립</h3>
+                        <p class="timeline-text">김민수 CEO와 박지원 CTO가 서울 강남에서 코히트랩 설립. 초기 5명의 팀원으로 시작.</p>
+                    </div>
+                </div>
+                
+                <!-- 2021년 -->
+                <div class="timeline-item">
+                    <div class="timeline-point"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2021년</div>
+                        <h3 class="timeline-title">CORE-RANK 베타 출시</h3>
+                        <p class="timeline-text">첫 번째 제품인 CORE-RANK 베타 버전 출시. 국내 20개 브랜드와 함께 초기 테스트 진행.</p>
+                    </div>
+                </div>
+                
+                <!-- 2022년 -->
+                <div class="timeline-item">
+                    <div class="timeline-point"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2022년</div>
+                        <h3 class="timeline-title">시리즈 A 투자 유치</h3>
+                        <p class="timeline-text">소프트뱅크 벤처스와 카카오벤처스로부터 시리즈 A 투자 유치 (100억원). 팀 규모 30명으로 확장.</p>
+                    </div>
+                </div>
+                
+                <!-- 2023년 -->
+                <div class="timeline-item">
+                    <div class="timeline-point"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2023년</div>
+                        <h3 class="timeline-title">글로벌 확장</h3>
+                        <p class="timeline-text">싱가포르, 도쿄 오피스 오픈. 아시아 시장 진출 본격화. 글로벌 고객사 100개 달성.</p>
+                    </div>
+                </div>
+                
+                <!-- 2024년 -->
+                <div class="timeline-item">
+                    <div class="timeline-point"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2024년</div>
+                        <h3 class="timeline-title">시리즈 B 투자 유치</h3>
+                        <p class="timeline-text">글로벌 VC들로부터 시리즈 B 투자 유치 (300억원). 뉴욕, 런던 오피스 설립으로 북미 및 유럽 시장 진출.</p>
+                    </div>
+                </div>
+                
+                <!-- 2025년 -->
+                <div class="timeline-item">
+                    <div class="timeline-point"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2025년</div>
+                        <h3 class="timeline-title">CORE-RANK 4.0 출시</h3>
+                        <p class="timeline-text">AI 기반 인플루언서 콘텐츠 분석과 글로벌 마케팅 인사이트를 강화한 CORE-RANK 4.0 버전 출시. 전 세계 고객사 200개 돌파.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 핵심 가치 섹션 -->
+    <section class="values-section">
+        <div class="container">
+            <h2 class="section-title">핵심 가치</h2>
+            
+            <div class="values-grid">
+                <!-- 가치 1 -->
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3 class="value-title">데이터 기반 혁신</h3>
+                    <p class="value-text">모든 의사결정은 직관이 아닌 데이터에 기반합니다. 지속적인 실험과 측정을 통해 끊임없이 개선합니다.</p>
+                </div>
+                
+                <!-- 가치 2 -->
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="value-title">고객 성공 중심</h3>
+                    <p class="value-text">고객의 성공이 우리의 성공입니다. 고객이 실질적인 비즈니스 성과를 달성할 수 있도록 모든 자원을 집중합니다.</p>
+                </div>
+                
+                <!-- 가치 3 -->
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3 class="value-title">글로벌 시각</h3>
+                    <p class="value-text">문화와 언어의 경계를 넘어, 다양한 시장의 특성을 이해하고 존중하며 글로벌 표준을 구축합니다.</p>
+                </div>
+                
+                <!-- 가치 4 -->
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="value-title">빠른 실행</h3>
+                    <p class="value-text">완벽함을 추구하되 신속한 실행을 중시합니다. 빠르게 시도하고, 실패에서 배우며, 지속적으로 발전합니다.</p>
+                </div>
+                
+                <!-- 가치 5 -->
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="value-title">창의적 문제 해결</h3>
+                    <p class="value-text">기존의 틀을 벗어나 새로운 시각으로 문제를 바라보고, 혁신적인 솔루션을 개발합니다.</p>
+                </div>
+                
+                <!-- 가치 6 -->
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="value-title">상호 존중</h3>
+                    <p class="value-text">다양한 배경과 관점을 가진 팀원 모두가 존중받으며, 열린 소통을 통해 함께 성장합니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 투자자 섹션 -->
+    <section class="investors-section">
+        <div class="container">
+            <h2 class="section-title">투자자 및 파트너</h2>
+            
+            <div class="investors-grid">
+                <!-- 투자자 1 -->
+                <div class="investor-card">
+                    <div class="investor-logo">
+                        <img src="images/client-logo-1.svg" alt="소프트뱅크 로고">
+                    </div>
+                    <h3 class="investor-name">소프트뱅크 벤처스</h3>
+                    <p class="investor-role">시리즈 A, B 투자자</p>
+                </div>
+                
+                <!-- 투자자 2 -->
+                <div class="investor-card">
+                    <div class="investor-logo">
+                        <img src="images/client-logo-2.svg" alt="카카오 로고">
+                    </div>
+                    <h3 class="investor-name">카카오벤처스</h3>
+                    <p class="investor-role">시리즈 A 투자자</p>
+                </div>
+                
+                <!-- 투자자 3 -->
+                <div class="investor-card">
+                    <div class="investor-logo">
+                        <img src="images/client-logo-3.svg" alt="시퀘이아 로고">
+                    </div>
+                    <h3 class="investor-name">시퀘이아 캐피털</h3>
+                    <p class="investor-role">시리즈 B 투자자</p>
+                </div>
+                
+                <!-- 투자자 4 -->
+                <div class="investor-card">
+                    <div class="investor-logo">
+                        <img src="images/client-logo-4.svg" alt="안드레센 로고">
+                    </div>
+                    <h3 class="investor-name">안드레센 호로위츠</h3>
+                    <p class="investor-role">시리즈 B 투자자</p>
+                </div>
+                
+                <!-- 파트너 1 -->
+                <div class="investor-card">
+                    <div class="investor-logo">
+                        <img src="images/client-logo-5.svg" alt="AWS 로고">
+                    </div>
+                    <h3 class="investor-name">AWS</h3>
+                    <p class="investor-role">기술 파트너</p>
+                </div>
+                
+                <!-- 파트너 2 -->
+                <div class="investor-card">
+                    <div class="investor-logo">
+                        <img src="images/client-logo-1.svg" alt="구글 로고">
+                    </div>
+                    <h3 class="investor-name">Google</h3>
+                    <p class="investor-role">기술 파트너</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA 섹션 -->
+    <section class="about-cta">
+        <div class="container">
+            <h2 class="cta-title">코히트랩과 함께 성장하세요</h2>
+            <p class="cta-text">데이터 기반 인플루언서 마케팅의 새로운 패러다임을 함께 만들어갈 파트너와 동료를 찾고 있습니다. 코히트랩의 일원이 되어 인플루언서 마케팅의 미래를 함께 만들어 나가세요.</p>
+            <div class="cta-buttons">
+                <a href="team.html" class="cta-button-white">팀 소개 보기</a>
+                <a href="#" class="cta-button-outline">채용 정보 보기</a>
+                <a href="index.html#contact" class="cta-button-white">문의하기</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">COHETE LAB</div>
+                    <p class="footer-description">데이터 기반 인플루언서 마케팅의 새로운 기준, CORE-RANK</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h3 class="footer-heading">솔루션</h3>
+                        <ul>
+                            <li><a href="index.html#core-rank">CORE-RANK</a></li>
+                            <li><a href="index.html#features">주요 기능</a></li>
+                            <li><a href="index.html#pricing">요금제</a></li>
+                            <li><a href="index.html#global">글로벌 솔루션</a></li>
+                            <li><a href="international.html">국제 진출</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3 class="footer-heading">회사</h3>
+                        <ul>
+                            <li><a href="about.html">회사 소개</a></li>
+                            <li><a href="team.html">팀 소개</a></li>
+                            <li><a href="#">채용 정보</a></li>
+                            <li><a href="#">파트너십</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3 class="footer-heading">리소스</h3>
+                        <ul>
+                            <li><a href="blog.html">블로그</a></li>
+                            <li><a href="insights.html">인사이트 리포트</a></li>
+                            <li><a href="#">웨비나</a></li>
+                            <li><a href="help.html">도움말 센터</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 COHETE LAB. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">개인정보처리방침</a>
+                    <a href="#">이용약관</a>
+                    <a href="#">쿠키 정책</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
