@@ -127,16 +127,43 @@ document.addEventListener('DOMContentLoaded', function() {
         el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
     });
     
+    // 로고 슬라이더 복제 및 무한 슬라이드 설정
+    const logoSlider = document.querySelector('.logo-slider');
+    if (logoSlider) {
+        // 원본 로고들 복제하여 무한 슬라이드 효과 생성
+        const logos = logoSlider.innerHTML;
+        logoSlider.innerHTML = logos + logos;
+        
+        // 슬라이더 폭 계산 및 설정
+        const logoItems = logoSlider.querySelectorAll('img');
+        const logoItemWidth = 180; // 로고 이미지 넓이
+        const logoGap = 64; // 로고 간 간격 (4rem)
+        const totalWidth = (logoItemWidth + logoGap) * (logoItems.length / 2);
+        
+        // 슬라이더 애니메이션 재설정
+        logoSlider.style.animation = 'none';
+        logoSlider.style.width = `${totalWidth}px`;
+        
+        // 강제 리플로우
+        void logoSlider.offsetWidth;
+        
+        // 애니메이션 다시 시작
+        logoSlider.style.animation = `scroll ${logoItems.length * 3}s linear infinite`;
+        
+        // 슬라이더에 마우스오버 시 애니메이션 일시 정지
+        logoSlider.addEventListener('mouseenter', function() {
+            this.style.animationPlayState = 'paused';
+        });
+        
+        // 슬라이더에서 마우스 나갈 때 애니메이션 재개
+        logoSlider.addEventListener('mouseleave', function() {
+            this.style.animationPlayState = 'running';
+        });
+    }
+    
     // 초기 스크롤 이벤트 트리거
     window.dispatchEvent(new Event('scroll'));
     
     // 페이지 로드 시 애니메이션
     document.body.classList.add('loaded');
-    
-    // 로고 슬라이더 복제
-    const logoSlider = document.querySelector('.logo-slider');
-    if (logoSlider) {
-        const logos = logoSlider.innerHTML;
-        logoSlider.innerHTML = logos + logos;
-    }
 });
