@@ -1,4 +1,6 @@
-<svg width="150" height="60" xmlns="http://www.w3.org/2000/svg">
-  <rect width="150" height="60" fill="transparent"/>
-  <text x="75" y="35" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="#666">Client A</text>
+<svg width="180" height="80" xmlns="http://www.w3.org/2000/svg">
+  <rect width="180" height="80" rx="10" fill="#ffffff"/>
+  <rect x="10" y="10" width="160" height="60" rx="5" fill="#f5f5f5"/>
+  <text x="90" y="45" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#444">Client A</text>
+  <circle cx="35" cy="45" r="15" fill="#3E63DD"/>
 </svg>
