@@ -1,8 +1,27 @@
-<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M16 32C24.8366 32 32 24.8366 32 16C32 7.16344 24.8366 0 16 0C7.16344 0 0 7.16344 0 16C0 24.8366 7.16344 32 16 32Z" fill="#0F172A"/>
-<path d="M16 7L25 16L16 25" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M7 16H25" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M16 7V25" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M9.85785 9.85791L22.1421 22.1422" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M9.85785 22.1422L22.1421 9.85791" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<svg width="300" height="100" viewBox="0 0 300 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dark circle background -->
+  <circle cx="50" cy="50" r="40" fill="#0F172A"/>
+  
+  <!-- Rocket elements -->
+  <g transform="translate(50, 50)">
+    <!-- Rocket body -->
+    <path d="M0,-25 C-10,-25 -15,-10 -15,0 C-15,10 -10,25 0,25 C10,25 15,10 15,0 C15,-10 10,-25 0,-25 Z" fill="#3E63DD"/>
+    
+    <!-- Rocket window -->
+    <circle cx="0" cy="-5" r="5" fill="white" opacity="0.8"/>
+    
+    <!-- Rocket fins -->
+    <path d="M-15,0 L-25,10 L-25,-5 Z" fill="#FF5470"/>
+    <path d="M15,0 L25,10 L25,-5 Z" fill="#FF8C42"/>
+    
+    <!-- Rocket flame -->
+    <path d="M-8,25 L0,35 L8,25" fill="#FF5470"/>
+    <path d="M-5,25 L0,32 L5,25" fill="#FFDD4A"/>
+    
+    <!-- Lines creating an X (modified from original asterisk) -->
+    <path d="M-10,-15 L10,15 M-10,15 L10,-15" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  
+  <!-- Text "COHETE LAB" -->
+  <text x="110" y="60" font-family="Arial, sans-serif" font-size="30" font-weight="800" fill="#0F172A">COHETE LAB</text>
 </svg>
