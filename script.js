@@ -287,4 +287,51 @@ document.addEventListener('DOMContentLoaded', function() {
             startImageInterval();
         });
     });
+
+    // 인플루언서 검색 UI 시뮬레이션
+    const searchBar = document.querySelector('.search-bar input');
+    const searchButton = document.querySelector('.search-button');
+    
+    if (searchBar && searchButton) {
+        // 검색창 포커스 이벤트
+        searchBar.addEventListener('focus', function() {
+            this.parentElement.style.boxShadow = '0 0 0 3px rgba(34, 197, 94, 0.2)';
+        });
+        
+        searchBar.addEventListener('blur', function() {
+            this.parentElement.style.boxShadow = 'none';
+        });
+        
+        // 검색 버튼 클릭 시 애니메이션
+        searchButton.addEventListener('click', function() {
+            this.classList.add('clicking');
+            setTimeout(() => {
+                this.classList.remove('clicking');
+            }, 200);
+            
+            // 검색 결과 시뮬레이션 (실제로는 백엔드 연동 필요)
+            alert('실제 서비스에서는 인플루언서 검색 결과가 표시됩니다.');
+        });
+    }
+
+    // CORE 인덱스 점수 카운트 업 애니메이션
+    const coreScore = document.querySelector('.core-score');
+    if (coreScore) {
+        const targetScore = parseInt(coreScore.textContent);
+        let currentScore = 0;
+        
+        const scoreInterval = setInterval(() => {
+            if (currentScore >= targetScore) {
+                clearInterval(scoreInterval);
+                return;
+            }
+            
+            currentScore += 1;
+            coreScore.textContent = currentScore + '%';
+            
+            if (currentScore >= targetScore) {
+                clearInterval(scoreInterval);
+            }
+        }, 30);
+    }
 });
