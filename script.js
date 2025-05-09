@@ -101,6 +101,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 // 선택된 탭 콘텐츠 표시
                 const tabId = this.getAttribute('data-tab');
                 document.getElementById(tabId).classList.add('active');
+                
+                // 지구 회전 방향 변경
+                const earth = document.getElementById('earth');
+                if (earth) {
+                    if (tabId === 'outbound') {
+                        earth.style.animation = 'rotate 60s linear infinite';
+                    } else {
+                        earth.style.animation = 'rotate 60s linear infinite reverse';
+                    }
+                }
             });
         });
     }
@@ -334,4 +344,82 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }, 30);
     }
+    
+    // 지구 애니메이션을 위한 별 생성 함수
+    function createStars() {
+        const starsContainer = document.getElementById('stars');
+        if (!starsContainer) return;
+        
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            
+            // 랜덤 위치
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.top = `${Math.random() * 100}%`;
+            
+            // 랜덤 크기
+            const size = Math.random() * 2 + 1;
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            
+            // 랜덤 투명도
+            star.style.opacity = Math.random() * 0.8 + 0.2;
+            
+            // 깜빡임 애니메이션
+            star.style.animation = `twinkle ${Math.random() * 5 + 2}s infinite alternate`;
+            
+            starsContainer.appendChild(star);
+        }
+    }
+
+    // 연결선 생성 함수
+    function createConnections() {
+        const earthWrapper = document.querySelector('.earth-wrapper');
+        const koreaMarker = document.querySelector('.marker.korea');
+        const markers = document.querySelectorAll('.marker:not(.korea)');
+        
+        if (!earthWrapper || !koreaMarker || markers.length === 0) return;
+        
+        // 한국에서 다른 모든 마커로 연결선 생성
+        markers.forEach(marker => {
+            const connection = document.createElement('div');
+            connection.className = 'connection';
+            
+            // 위치 계산
+            const koreaRect = koreaMarker.getBoundingClientRect();
+            const markerRect = marker.getBoundingClientRect();
+            const wrapperRect = earthWrapper.getBoundingClientRect();
+            
+            // 상대 위치
+            const startX = koreaRect.left - wrapperRect.left + koreaRect.width/2;
+            const startY = koreaRect.top - wrapperRect.top + koreaRect.height/2;
+            const endX = markerRect.left - wrapperRect.left + markerRect.width/2;
+            const endY = markerRect.top - wrapperRect.top + markerRect.height/2;
+            
+            // 길이와 각도 계산
+            const length = Math.sqrt(Math.pow(endX - startX, 2) + Math.pow(endY - startY, 2));
+            const angle = Math.atan2(endY - startY, endX - startX) * 180 / Math.PI;
+            
+            // 스타일 적용
+            connection.style.width = `${length}px`;
+            connection.style.left = `${startX}px`;
+            connection.style.top = `${startY}px`;
+            connection.style.transform = `rotate(${angle}deg)`;
+            
+            earthWrapper.appendChild(connection);
+        });
+    }
+    
+    // 지구 효과 초기화
+    function initEarthEffects() {
+        // 별 생성
+        createStars();
+        
+        // 약간의 지연 후 연결선 생성 (DOM이 완전히 렌더링 된 후)
+        setTimeout(createConnections, 500);
+    }
+    
+    // 페이지 로드 시 지구 효과 초기화
+    initEarthEffects();
 });
