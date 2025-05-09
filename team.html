@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>팀 소개 - 코히트랩</title>
+    <title>팀 소개 - 코히트랩 | CORE-RANK</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
@@ -11,413 +11,241 @@
     <style>
         /* 팀 소개 페이지 추가 스타일 */
         .page-header {
-            background-color: var(--primary-color);
+            background-color: var(--dark-background);
             color: white;
-            padding: 6rem 0 3rem;
+            padding: 8rem 0 4rem;
             text-align: center;
-            margin-bottom: 3rem;
         }
         
         .page-title {
-            font-size: 2.8rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
         }
         
-        .page-description {
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
             max-width: 700px;
             margin: 0 auto;
-            font-size: 1.1rem;
-            opacity: 0.9;
+            line-height: 1.6;
         }
-
-        .team-intro {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 4rem;
+        
+        .team-section {
+            padding: 5rem 0;
         }
-
-        .team-intro-heading {
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: var(--text-color);
+        
+        .team-section:nth-child(even) {
+            background-color: var(--light-background);
         }
-
-        .team-intro-text {
-            font-size: 1.1rem;
-            color: var(--light-text);
-            line-height: 1.8;
-            margin-bottom: 2rem;
-        }
-
-        /* 리더십 팀 스타일 */
-        .leadership-section {
-            padding: 3rem 0 5rem;
-        }
-
-        .section-title {
-            font-size: 2.2rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: var(--text-color);
-        }
-
+        
         .leadership-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 3rem;
-            margin-bottom: 4rem;
+            margin-top: 3rem;
         }
-
-        .leadership-card {
-            background-color: white;
-            border-radius: var(--border-radius);
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .team-member {
+            text-align: center;
+        }
+        
+        .member-photo {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            border-radius: 50%;
             overflow: hidden;
+            margin-bottom: 1.5rem;
+            position: relative;
             box-shadow: var(--box-shadow);
-            transition: var(--transition);
         }
-
-        .leadership-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .leadership-image {
-            height: 350px;
-            overflow: hidden;
-        }
-
-        .leadership-image img {
+        
+        .member-photo img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: var(--transition);
         }
-
-        .leadership-card:hover .leadership-image img {
-            transform: scale(1.05);
-        }
-
-        .leadership-content {
-            padding: 2rem;
-        }
-
-        .leadership-name {
-            font-size: 1.5rem;
+        
+        .member-info h3 {
+            font-size: 1.3rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
-            color: var(--text-color);
         }
-
-        .leadership-title {
-            font-size: 1.1rem;
+        
+        .member-info .position {
             color: var(--primary-color);
             font-weight: 600;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
-
-        .leadership-bio {
-            font-size: 1rem;
+        
+        .member-info p {
             color: var(--light-text);
+            font-size: 0.95rem;
             line-height: 1.7;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
         }
-
-        .leadership-social {
+        
+        .social-links {
             display: flex;
+            justify-content: center;
             gap: 1rem;
         }
-
-        .social-link {
-            width: 38px;
-            height: 38px;
-            background-color: var(--light-background);
+        
+        .social-links a {
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
+            background-color: var(--primary-light);
+            color: var(--primary-color);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--primary-color);
             transition: var(--transition);
         }
-
-        .social-link:hover {
+        
+        .social-links a:hover {
             background-color: var(--primary-color);
             color: white;
             transform: translateY(-3px);
         }
-
-        /* 팀 구성 섹션 */
-        .teams-section {
-            padding: 5rem 0;
-            background-color: var(--light-background);
+        
+        .department-container {
+            margin-top: 4rem;
         }
-
-        .team-tabs {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
-            gap: 1rem;
+        
+        .department {
+            margin-bottom: 4rem;
         }
-
-        .team-tab {
-            background-color: white;
+        
+        .department:last-child {
+            margin-bottom: 0;
+        }
+        
+        .department-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-align: center;
             color: var(--text-color);
-            padding: 1rem 2rem;
-            border-radius: 30px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            border: 1px solid rgba(0, 0, 0, 0.1);
         }
-
-        .team-tab.active, .team-tab:hover {
-            background-color: var(--primary-color);
-            color: white;
-            border-color: var(--primary-color);
-        }
-
-        .team-grid {
+        
+        .stat-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 2rem;
+            margin-top: 4rem;
+            text-align: center;
         }
-
-        .team-card {
+        
+        .stat-box {
             background-color: white;
             border-radius: var(--border-radius);
-            overflow: hidden;
+            padding: 2.5rem;
             box-shadow: var(--box-shadow);
             transition: var(--transition);
-            text-align: center;
         }
-
-        .team-card:hover {
+        
+        .stat-box:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
-
-        .team-member-image {
-            height: 220px;
-            overflow: hidden;
-        }
-
-        .team-member-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .team-card:hover .team-member-image img {
-            transform: scale(1.05);
-        }
-
-        .team-member-content {
-            padding: 1.5rem;
-        }
-
-        .team-member-name {
-            font-size: 1.2rem;
-            font-weight: 700;
+        
+        .stat-value {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary-color);
             margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            font-weight: 600;
             color: var(--text-color);
         }
-
-        .team-member-title {
-            font-size: 0.95rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        .team-member-social {
-            display: flex;
-            justify-content: center;
-            gap: 0.8rem;
-        }
-
-        /* 문화 섹션 */
-        .culture-section {
-            padding: 6rem 0;
-        }
-
-        .culture-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 4rem;
-        }
-
-        .culture-item {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .culture-icon {
-            width: 60px;
-            height: 60px;
-            background-color: var(--primary-light);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-color);
-            font-size: 1.5rem;
-            flex-shrink: 0;
-        }
-
-        .culture-content h3 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--text-color);
-        }
-
-        .culture-content p {
-            font-size: 1rem;
+        
+        .stat-desc {
             color: var(--light-text);
-            line-height: 1.7;
+            font-size: 0.95rem;
+            margin-top: 0.5rem;
         }
-
-        /* 채용 섹션 */
-        .careers-section {
+        
+        .career-section {
             background-color: var(--primary-color);
             color: white;
             padding: 5rem 0;
             text-align: center;
-            margin-bottom: 5rem;
-            border-radius: var(--border-radius);
         }
-
-        .careers-title {
+        
+        .career-title {
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 1.5rem;
         }
-
-        .careers-text {
+        
+        .career-desc {
             font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 3rem;
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
             opacity: 0.9;
-            line-height: 1.7;
         }
-
-        .open-positions {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1000px;
-            margin: 0 auto 3rem;
-        }
-
-        .position-card {
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: var(--border-radius);
-            padding: 2rem;
-            transition: var(--transition);
-        }
-
-        .position-card:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            transform: translateY(-5px);
-        }
-
-        .position-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 0.8rem;
-        }
-
-        .position-location {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-            opacity: 0.8;
-            font-size: 0.95rem;
-        }
-
-        .position-description {
-            font-size: 1rem;
-            opacity: 0.9;
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
-
-        .position-apply {
-            display: inline-block;
+        
+        .career-button {
             background-color: white;
             color: var(--primary-color);
-            padding: 0.7rem 1.5rem;
-            border-radius: 30px;
-            font-weight: 600;
-            transition: var(--transition);
-        }
-
-        .position-apply:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .careers-button {
-            background-color: white;
-            color: var(--primary-color);
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 30px;
-            font-weight: 600;
             font-size: 1.1rem;
-            transition: var(--transition);
+            font-weight: 600;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: var(--border-radius);
             cursor: pointer;
+            transition: var(--transition);
         }
-
-        .careers-button:hover {
-            transform: translateY(-5px);
+        
+        .career-button:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+            transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
-
-        /* 미디어 쿼리 */
-        @media (max-width: 992px) {
-            .culture-grid {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .team-tabs {
-                flex-direction: column;
-                width: 100%;
-                max-width: 300px;
-                margin-left: auto;
-                margin-right: auto;
-            }
-
+        
+        @media (max-width: 1200px) {
             .leadership-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .team-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .stat-container {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
-
+        
+        @media (max-width: 992px) {
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
         @media (max-width: 576px) {
-            .page-title, .team-intro-heading, .careers-title {
+            .leadership-grid,
+            .team-grid,
+            .stat-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .page-title {
+                font-size: 2.2rem;
+            }
+            
+            .career-title {
                 font-size: 2rem;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
-            }
-
-            .culture-item {
-                flex-direction: column;
-                gap: 1rem;
-                text-align: center;
-            }
-
-            .culture-icon {
-                margin: 0 auto;
             }
         }
     </style>
@@ -436,8 +264,8 @@
                     <li><a href="index.html#features">주요 기능</a></li>
                     <li><a href="index.html#benefits">비즈니스 혜택</a></li>
                     <li><a href="index.html#pricing">요금제</a></li>
+                    <li><a href="index.html#technology">기술력</a></li>
                     <li><a href="index.html#global">글로벌 서비스</a></li>
-                    <li><a href="about.html">회사 소개</a></li>
                     <li><a href="index.html#contact">문의하기</a></li>
                 </ul>
             </nav>
@@ -451,119 +279,58 @@
     <!-- 페이지 헤더 -->
     <section class="page-header">
         <div class="container">
-            <h1 class="page-title">코히트랩 팀</h1>
-            <p class="page-description">인플루언서 마케팅의 새로운 패러다임을 함께 만들어가는 전문가들</p>
+            <h1 class="page-title">혁신적인 인재들이 모여 데이터의 힘을 극대화합니다</h1>
+            <p class="page-subtitle">코히트랩은 다양한 배경과 전문성을 가진 인재들이 모여 인플루언서 마케팅의 미래를 만들어갑니다</p>
         </div>
     </section>
 
-    <!-- 팀 소개 -->
-    <section class="team-intro-section">
+    <!-- 리더십 팀 섹션 -->
+    <section class="team-section">
         <div class="container">
-            <div class="team-intro">
-                <h2 class="team-intro-heading">혁신을 주도하는 사람들</h2>
-                <p class="team-intro-text">코히트랩은 데이터 과학, 인공지능, 마케팅, 소프트웨어 엔지니어링 분야의 전문가들이 모여 인플루언서 마케팅의 미래를 만들어가고 있습니다. 다양한 배경과 경험을 가진 구성원들이 같은 비전을 향해 함께 나아가며, 혁신적인 솔루션을 개발하고 있습니다.</p>
-                <p class="team-intro-text">전 세계 5개 오피스에서 100명 이상의 팀원들이 국경을 초월한 협업을 통해 글로벌 표준을 만들어가는 과정에 동참해보세요.</p>
+            <div class="section-header">
+                <h2 class="section-title">리더십 팀</h2>
+                <p class="section-subtitle">코히트랩을 이끄는 선구자들</p>
             </div>
-        </div>
-    </section>
-
-    <!-- 리더십 팀 -->
-    <section class="leadership-section">
-        <div class="container">
-            <h2 class="section-title">리더십 팀</h2>
-            
             <div class="leadership-grid">
-                <!-- 리더 1 -->
-                <div class="leadership-card">
-                    <div class="leadership-image">
-                        <img src="images/avatar-1.svg" alt="김민수 CEO">
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img src="https://source.unsplash.com/random/400x400/?ceo" alt="CEO 김민준">
                     </div>
-                    <div class="leadership-content">
-                        <h3 class="leadership-name">김민수</h3>
-                        <p class="leadership-title">CEO & 공동 창업자</p>
-                        <p class="leadership-bio">삼성전자와 네이버에서의 데이터 분석 경험을 바탕으로 코히트랩을 설립했습니다. KAIST 전산학과를 졸업하고 스탠포드 대학에서 MBA를 취득했습니다. 데이터 기반 의사결정과 알고리즘 마케팅에 대한 깊은 이해를 바탕으로 회사를 이끌고 있습니다.</p>
-                        <div class="leadership-social">
-                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <div class="member-info">
+                        <h3>김민준</h3>
+                        <p class="position">CEO & 공동 창업자</p>
+                        <p>데이터 과학과 마케팅 분야에서 15년 이상의 경력을 가진 전문가로, 코히트랩을 설립하기 전 글로벌 디지털 마케팅 에이전시의 아시아 태평양 지역 대표를 역임했습니다. 서울대학교 컴퓨터공학과를 졸업하고 스탠포드 대학에서 MBA를 취득했습니다.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
                         </div>
                     </div>
                 </div>
-                
-                <!-- 리더 2 -->
-                <div class="leadership-card">
-                    <div class="leadership-image">
-                        <img src="images/avatar-2.svg" alt="박지원 CTO">
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img src="https://source.unsplash.com/random/400x400/?woman" alt="CTO 박서연">
                     </div>
-                    <div class="leadership-content">
-                        <h3 class="leadership-name">박지원</h3>
-                        <p class="leadership-title">CTO & 공동 창업자</p>
-                        <p class="leadership-bio">구글과 카카오에서 AI 연구 및 개발을 담당했습니다. 서울대 컴퓨터공학과 졸업 후 UC 버클리에서 인공지능 석사 학위를 취득했습니다. 자연어 처리, 컴퓨터 비전, 추천 시스템 분야의 전문가로, CORE-RANK의 핵심 알고리즘을 개발했습니다.</p>
-                        <div class="leadership-social">
-                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    <div class="member-info">
+                        <h3>박서연</h3>
+                        <p class="position">CTO & 공동 창업자</p>
+                        <p>인공지능과 머신러닝 분야의 전문가로, 이전에는 실리콘밸리의 유명 테크 기업에서 선임 엔지니어로 근무했습니다. 카이스트 전산학과를 졸업하고 MIT에서 인공지능 및 머신러닝 박사 학위를 취득했습니다. CORE-RANK 시스템의 핵심 알고리즘을 개발했습니다.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
                         </div>
                     </div>
                 </div>
-                
-                <!-- 리더 3 -->
-                <div class="leadership-card">
-                    <div class="leadership-image">
-                        <img src="images/avatar-1.svg" alt="이지현 COO">
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img src="https://source.unsplash.com/random/400x400/?business" alt="COO 이준호">
                     </div>
-                    <div class="leadership-content">
-                        <h3 class="leadership-name">이지현</h3>
-                        <p class="leadership-title">COO</p>
-                        <p class="leadership-bio">글로벌 브랜드 에이전시에서 10년 이상의 경력을 쌓은 마케팅 전문가입니다. 연세대 경영학과를 졸업하고 INSEAD에서 MBA를 취득했습니다. 탁월한 조직 관리 능력과 비즈니스 전략으로 코히트랩의 글로벌 성장을 주도하고 있습니다.</p>
-                        <div class="leadership-social">
-                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 리더 4 -->
-                <div class="leadership-card">
-                    <div class="leadership-image">
-                        <img src="images/avatar-2.svg" alt="최준혁 CFO">
-                    </div>
-                    <div class="leadership-content">
-                        <h3 class="leadership-name">최준혁</h3>
-                        <p class="leadership-title">CFO</p>
-                        <p class="leadership-bio">글로벌 투자은행에서 10년 이상 테크 산업 투자 및 M&A를 담당했습니다. 고려대 경제학과를 졸업하고 하버드 경영대학원에서 MBA를 취득했습니다. 탄탄한 재무 관리와 투자 유치 전략으로 회사의 성장을 뒷받침하고 있습니다.</p>
-                        <div class="leadership-social">
-                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 리더 5 -->
-                <div class="leadership-card">
-                    <div class="leadership-image">
-                        <img src="images/avatar-1.svg" alt="정유진 CMO">
-                    </div>
-                    <div class="leadership-content">
-                        <h3 class="leadership-name">정유진</h3>
-                        <p class="leadership-title">CMO</p>
-                        <p class="leadership-bio">글로벌 테크 기업에서 브랜드 마케팅 총괄을 맡았습니다. 서울대 언론정보학과를 졸업하고 노스웨스턴 대학에서 마케팅 석사를 취득했습니다. 창의적인 마케팅 전략과 스토리텔링으로 코히트랩의 브랜드 가치를 높이고 있습니다.</p>
-                        <div class="leadership-social">
-                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 리더 6 -->
-                <div class="leadership-card">
-                    <div class="leadership-image">
-                        <img src="images/avatar-2.svg" alt="김태영 글로벌 비즈니스 총괄">
-                    </div>
-                    <div class="leadership-content">
-                        <h3 class="leadership-name">김태영</h3>
-                        <p class="leadership-title">글로벌 비즈니스 총괄</p>
-                        <p class="leadership-bio">글로벌 소셜 미디어 기업에서 아시아 태평양 지역 비즈니스를 담당했습니다. 뉴욕대 국제비즈니스 전공 후 구글과 페이스북에서 글로벌 마케팅을 담당했습니다. 뛰어난 네트워크와 글로벌 비즈니스 감각으로 국제 진출을 이끌고 있습니다.</p>
-                        <div class="leadership-social">
-                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <div class="member-info">
+                        <h3>이준호</h3>
+                        <p class="position">COO</p>
+                        <p>비즈니스 운영 및 글로벌 확장 전략 전문가로, 코히트랩 합류 전 글로벌 SaaS 기업의 아시아 태평양 사업 총괄을 맡았습니다. 연세대학교 경영학과를 졸업하고 하버드 대학에서 MBA를 취득했습니다. 빠른 글로벌 확장을 위한 지역별 전략을 수립하고 실행합니다.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
                         </div>
                     </div>
                 </div>
@@ -571,136 +338,184 @@
         </div>
     </section>
 
-    <!-- 팀 구성 섹션 -->
-    <section class="teams-section">
+    <!-- 팀 구성원 섹션 -->
+    <section class="team-section">
         <div class="container">
-            <h2 class="section-title">코히트랩 팀</h2>
-            
-            <div class="team-tabs">
-                <div class="team-tab active">전체 팀</div>
-                <div class="team-tab">엔지니어링</div>
-                <div class="team-tab">데이터 사이언스</div>
-                <div class="team-tab">제품</div>
-                <div class="team-tab">마케팅</div>
-                <div class="team-tab">영업</div>
-                <div class="team-tab">운영</div>
+            <div class="section-header">
+                <h2 class="section-title">우리 팀을 만나보세요</h2>
+                <p class="section-subtitle">코히트랩은 각 분야 최고의 인재들로 구성되어 있습니다</p>
             </div>
-            
-            <div class="team-grid">
-                <!-- 팀원 1 -->
-                <div class="team-card">
-                    <div class="team-member-image">
-                        <img src="images/avatar-1.svg" alt="이지윤">
-                    </div>
-                    <div class="team-member-content">
-                        <h3 class="team-member-name">이지윤</h3>
-                        <p class="team-member-title">선임 데이터 사이언티스트</p>
-                        <div class="team-member-social">
-                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+            <div class="department-container">
+                <div class="department">
+                    <h3 class="department-title">엔지니어링 팀</h3>
+                    <div class="team-grid">
+                        <div class="team-member">
+                            <div class="member-photo">
+                                <img src="https://source.unsplash.com/random/400x400/?developer" alt="백엔드 리드 강성민">
+                            </div>
+                            <div class="member-info">
+                                <h3>강성민</h3>
+                                <p class="position">백엔드 개발 리드</p>
+                                <div class="social-links">
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="#"><i class="fab fa-github"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-photo">
+                                <img src="https://source.unsplash.com/random/400x400/?programmer" alt="프론트엔드 리드 최지원">
+                            </div>
+                            <div class="member-info">
+                                <h3>최지원</h3>
+                                <p class="position">프론트엔드 개발 리드</p>
+                                <div class="social-links">
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="#"><i class="fab fa-github"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-photo">
+                                <img src="https://source.unsplash.com/random/400x400/?data" alt="데이터 과학자 정다영">
+                            </div>
+                            <div class="member-info">
+                                <h3>정다영</h3>
+                                <p class="position">데이터 사이언스 리드</p>
+                                <div class="social-links">
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="#"><i class="fab fa-github"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-photo">
+                                <img src="https://source.unsplash.com/random/400x400/?engineer" alt="클라우드 엔지니어 이태현">
+                            </div>
+                            <div class="member-info">
+                                <h3>이태현</h3>
+                                <p class="position">클라우드 인프라 리드</p>
+                                <div class="social-links">
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="#"><i class="fab fa-github"></i></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- 팀원 2 -->
-                <div class="team-card">
-                    <div class="team-member-image">
-                        <img src="images/avatar-2.svg" alt="김준호">
-                    </div>
-                    <div class="team-member-content">
-                        <h3 class="team-member-name">김준호</h3>
-                        <p class="team-member-title">AI 엔지니어</p>
-                        <div class="team-member-social">
-                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                <div class="department">
+                    <h3 class="department-title">제품 및 디자인 팀</h3>
+                    <div class="team-grid">
+                        <div class="team-member">
+                            <div class="member-photo">
+                                <img src="https://source.unsplash.com/random/400x400/?product" alt="제품 관리자 윤수진">
+                            </div>
+                            <div class="member-info">
+                                <h3>윤수진</h3>
+                                <p class="position">제품 총괄</p>
+                                <div class="social-links">
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-photo">
+                                <img src="https://source.unsplash.com/random/400x400/?designer" alt="UX 디자이너 박현우">
+                            </div>
+                            <div class="member-info">
+                                <h3>박현우</h3>
+                                <p class="position">UX/UI 디자인 리드</p>
+                                <div class="social-links">
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="#"><i class="fab fa-dribbble"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-photo">
+                                <img src="https://source.unsplash.com/random/400x400/?research" alt="제품 연구원 김도연">
+                            </div>
+                            <div class="member-info">
+                                <h3>김도연</h3>
+                                <p class="position">제품 연구 책임자</p>
+                                <div class="social-links">
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="#"><i class="fab fa-medium"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-photo">
+                                <img src="https://source.unsplash.com/random/400x400/?artist" alt="UI 디자이너 장민서">
+                            </div>
+                            <div class="member-info">
+                                <h3>장민서</h3>
+                                <p class="position">UI 디자이너</p>
+                                <div class="social-links">
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="#"><i class="fab fa-behance"></i></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- 팀원 3 -->
-                <div class="team-card">
-                    <div class="team-member-image">
-                        <img src="images/avatar-1.svg" alt="박하은">
-                    </div>
-                    <div class="team-member-content">
-                        <h3 class="team-member-name">박하은</h3>
-                        <p class="team-member-title">UX/UI 디자이너</p>
-                        <div class="team-member-social">
-                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-dribbble"></i></a>
+                <div class="department">
+                    <h3 class="department-title">마케팅 및 비즈니스 개발 팀</h3>
+                    <div class="team-grid">
+                        <div class="team-member">
+                            <div class="member-photo">
+                                <img src="https://source.unsplash.com/random/400x400/?marketing" alt="마케팅 책임자 임수현">
+                            </div>
+                            <div class="member-info">
+                                <h3>임수현</h3>
+                                <p class="position">마케팅 총괄</p>
+                                <div class="social-links">
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                
-                <!-- 팀원 4 -->
-                <div class="team-card">
-                    <div class="team-member-image">
-                        <img src="images/avatar-2.svg" alt="최성민">
-                    </div>
-                    <div class="team-member-content">
-                        <h3 class="team-member-name">최성민</h3>
-                        <p class="team-member-title">풀스택 개발자</p>
-                        <div class="team-member-social">
-                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <div class="team-member">
+                            <div class="member-photo">
+                                <img src="https://source.unsplash.com/random/400x400/?business" alt="비즈니스 개발 매니저 송재윤">
+                            </div>
+                            <div class="member-info">
+                                <h3>송재윤</h3>
+                                <p class="position">비즈니스 개발 책임자</p>
+                                <div class="social-links">
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                
-                <!-- 팀원 5 -->
-                <div class="team-card">
-                    <div class="team-member-image">
-                        <img src="images/avatar-1.svg" alt="정소현">
-                    </div>
-                    <div class="team-member-content">
-                        <h3 class="team-member-name">정소현</h3>
-                        <p class="team-member-title">콘텐츠 마케터</p>
-                        <div class="team-member-social">
-                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <div class="team-member">
+                            <div class="member-photo">
+                                <img src="https://source.unsplash.com/random/400x400/?sales" alt="영업 매니저 정현진">
+                            </div>
+                            <div class="member-info">
+                                <h3>정현진</h3>
+                                <p class="position">글로벌 영업 책임자</p>
+                                <div class="social-links">
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                
-                <!-- 팀원 6 -->
-                <div class="team-card">
-                    <div class="team-member-image">
-                        <img src="images/avatar-2.svg" alt="이동현">
-                    </div>
-                    <div class="team-member-content">
-                        <h3 class="team-member-name">이동현</h3>
-                        <p class="team-member-title">기업 영업 담당자</p>
-                        <div class="team-member-social">
-                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 팀원 7 -->
-                <div class="team-card">
-                    <div class="team-member-image">
-                        <img src="images/avatar-1.svg" alt="김지수">
-                    </div>
-                    <div class="team-member-content">
-                        <h3 class="team-member-name">김지수</h3>
-                        <p class="team-member-title">프로덕트 매니저</p>
-                        <div class="team-member-social">
-                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-medium"></i></a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 팀원 8 -->
-                <div class="team-card">
-                    <div class="team-member-image">
-                        <img src="images/avatar-2.svg" alt="장민준">
-                    </div>
-                    <div class="team-member-content">
-                        <h3 class="team-member-name">장민준</h3>
-                        <p class="team-member-title">데이터 엔지니어</p>
-                        <div class="team-member-social">
-                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <div class="team-member">
+                            <div class="member-photo">
+                                <img src="https://source.unsplash.com/random/400x400/?content" alt="콘텐츠 전략가 한지은">
+                            </div>
+                            <div class="member-info">
+                                <h3>한지은</h3>
+                                <p class="position">콘텐츠 전략 책임자</p>
+                                <div class="social-links">
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="#"><i class="fab fa-medium"></i></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -708,123 +523,58 @@
         </div>
     </section>
 
-    <!-- 기업 문화 섹션 -->
-    <section class="culture-section">
+    <!-- 팀 통계 섹션 -->
+    <section class="team-section">
         <div class="container">
-            <h2 class="section-title">코히트랩 문화</h2>
-            
-            <div class="culture-grid">
-                <!-- 문화 항목 1 -->
-                <div class="culture-item">
-                    <div class="culture-icon">
-                        <i class="fas fa-lightbulb"></i>
-                    </div>
-                    <div class="culture-content">
-                        <h3>혁신의 일상화</h3>
-                        <p>코히트랩에서 혁신은 일상입니다. 모든 팀원은 끊임없이 새로운 아이디어를 제안하고, 더 나은 방법을 모색하는 환경에서 일하며, 지속적인 개선과 창의적 문제 해결을 추구합니다.</p>
-                    </div>
+            <div class="section-header">
+                <h2 class="section-title">코히트랩 팀 구성</h2>
+                <p class="section-subtitle">다양한 배경과 전문성을 가진 인재들이 함께 일하고 있습니다</p>
+            </div>
+            <div class="stat-container">
+                <div class="stat-box">
+                    <div class="stat-value">150+</div>
+                    <div class="stat-label">구성원</div>
+                    <p class="stat-desc">전 세계 5개국 오피스에서 함께 일하는 팀원들</p>
                 </div>
-                
-                <!-- 문화 항목 2 -->
-                <div class="culture-item">
-                    <div class="culture-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <div class="culture-content">
-                        <h3>다양성과 포용성</h3>
-                        <p>다양한 문화, 배경, 관점을 가진 팀원들이 상호 존중하는 환경에서 일합니다. 서로 다름을 인정하고, 열린 마음으로 소통하며, 다양성에서 창의력과 혁신의 원천을 찾습니다.</p>
-                    </div>
+                <div class="stat-box">
+                    <div class="stat-value">18</div>
+                    <div class="stat-label">국적</div>
+                    <p class="stat-desc">다양한 문화적 배경을 가진 글로벌 인재들</p>
                 </div>
-                
-                <!-- 문화 항목 3 -->
-                <div class="culture-item">
-                    <div class="culture-icon">
-                        <i class="fas fa-rocket"></i>
-                    </div>
-                    <div class="culture-content">
-                        <h3>빠른 실행과 성장</h3>
-                        <p>완벽함보다는 신속한 실행과 학습을 중시합니다. 실패는 성장의 기회로 여기며, 빠른 피드백 루프를 통해 지속적으로 발전하는 조직을 지향합니다.</p>
-                    </div>
+                <div class="stat-box">
+                    <div class="stat-value">52%</div>
+                    <div class="stat-label">여성 비율</div>
+                    <p class="stat-desc">모든 부서와 직급에서의 성별 다양성</p>
                 </div>
-                
-                <!-- 문화 항목 4 -->
-                <div class="culture-item">
-                    <div class="culture-icon">
-                        <i class="fas fa-balance-scale"></i>
-                    </div>
-                    <div class="culture-content">
-                        <h3>일과 삶의 균형</h3>
-                        <p>높은 성과와 개인의 웰빙이 모두 중요하다고 믿습니다. 유연한 근무 환경, 재충전을 위한 휴가 정책, 건강 관리 지원 등 팀원들의 균형 있는 삶을 응원합니다.</p>
-                    </div>
-                </div>
-                
-                <!-- 문화 항목 5 -->
-                <div class="culture-item">
-                    <div class="culture-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <div class="culture-content">
-                        <h3>지속적인 학습</h3>
-                        <p>급변하는 기술 환경에서 끊임없는 학습은 필수입니다. 정기적인 스터디 그룹, 컨퍼런스 참가 지원, 역량 개발 프로그램 등 다양한 학습 기회를 제공합니다.</p>
-                    </div>
-                </div>
-                
-                <!-- 문화 항목 6 -->
-                <div class="culture-item">
-                    <div class="culture-icon">
-                        <i class="fas fa-globe"></i>
-                    </div>
-                    <div class="culture-content">
-                        <h3>글로벌 시각</h3>
-                        <p>서울, 싱가포르, 도쿄, 뉴욕, 런던 오피스를 연결하는 글로벌 팀으로, 다양한 국가와 문화에 대한 이해를 바탕으로 세계 시장을 위한 솔루션을 개발합니다.</p>
-                    </div>
+                <div class="stat-box">
+                    <div class="stat-value">85%</div>
+                    <div class="stat-label">직원 만족도</div>
+                    <p class="stat-desc">최근 내부 직원 만족도 조사 결과</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- 채용 정보 섹션 -->
-    <section class="careers-section">
+    <section class="career-section">
         <div class="container">
-            <h2 class="careers-title">함께 일해요</h2>
-            <p class="careers-text">코히트랩은 인플루언서 마케팅의 미래를 함께 만들어갈 열정적인 인재를 찾고 있습니다. 도전적인 문제를 해결하고, 글로벌 팀과 협업하며 성장할 수 있는 기회를 제공합니다.</p>
-            
-            <div class="open-positions">
-                <!-- 채용 포지션 1 -->
-                <div class="position-card">
-                    <h3 class="position-title">시니어 백엔드 개발자</h3>
-                    <div class="position-location">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>서울 / 원격</span>
-                    </div>
-                    <p class="position-description">대규모 데이터 처리 및 API 개발 경험이 있는 백엔드 개발자를 찾습니다. Java, Python, AWS 경험 필수.</p>
-                    <a href="#" class="position-apply">지원하기</a>
-                </div>
-                
-                <!-- 채용 포지션 2 -->
-                <div class="position-card">
-                    <h3 class="position-title">머신러닝 엔지니어</h3>
-                    <div class="position-location">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>서울 / 싱가포르</span>
-                    </div>
-                    <p class="position-description">소셜 미디어 데이터 분석 및 자연어 처리 모델 개발 경험이 있는 ML 전문가를 찾습니다.</p>
-                    <a href="#" class="position-apply">지원하기</a>
-                </div>
-                
-                <!-- 채용 포지션 3 -->
-                <div class="position-card">
-                    <h3 class="position-title">글로벌 마케팅 매니저</h3>
-                    <div class="position-location">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>뉴욕 / 런던</span>
-                    </div>
-                    <p class="position-description">B2B SaaS 마케팅 경험과 뛰어난 영어 구사력을 갖춘 마케팅 전문가를 찾습니다.</p>
-                    <a href="#" class="position-apply">지원하기</a>
+            <h2 class="career-title">함께 성장할 인재를 찾고 있습니다</h2>
+            <p class="career-desc">코히트랩은 인플루언서 마케팅 산업에 혁신을 가져올 열정적인 인재를 찾고 있습니다. 우리와 함께 글로벌 시장에서 새로운 가능성을 열어갈 동료들을 기다립니다.</p>
+            <button class="career-button">채용 정보 보기</button>
+        </div>
+    </section>
+
+    <!-- CTA 섹션 -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>코히트랩과 함께 인플루언서 마케팅의 새로운 시대를 열어보세요</h2>
+                <p>CORE-RANK 솔루션으로 데이터 기반 인플루언서 마케팅의 힘을 경험해보세요.</p>
+                <div class="cta-buttons">
+                    <button class="cta-button large">무료 체험 시작하기</button>
+                    <button class="secondary-button large">솔루션 데모 보기</button>
                 </div>
             </div>
-            
-            <a href="#" class="careers-button">모든 채용공고 보기</a>
         </div>
     </section>
 
@@ -885,49 +635,5 @@
     </footer>
 
     <script src="script.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // 팀 탭 기능
-            const teamTabs = document.querySelectorAll('.team-tab');
-            
-            teamTabs.forEach(tab => {
-                tab.addEventListener('click', function() {
-                    // 활성화된 탭 변경
-                    teamTabs.forEach(t => t.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // 실제 서비스에서는 여기에 팀 필터링 로직 추가
-                    // 프로토타입에서는 시각적 효과만 적용
-                    const teamCards = document.querySelectorAll('.team-card');
-                    teamCards.forEach(card => {
-                        card.style.opacity = '0.5';
-                        setTimeout(() => {
-                            card.style.opacity = '1';
-                        }, 300);
-                    });
-                });
-            });
-            
-            // 채용 지원 버튼
-            const applyButtons = document.querySelectorAll('.position-apply');
-            
-            applyButtons.forEach(button => {
-                button.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    alert('채용 지원 페이지로 이동합니다. 실제 서비스에서는 지원 양식이 표시됩니다.');
-                });
-            });
-            
-            // 모든 채용공고 버튼
-            const careersButton = document.querySelector('.careers-button');
-            
-            if (careersButton) {
-                careersButton.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    alert('채용 페이지로 이동합니다. 실제 서비스에서는 모든 채용 공고 목록이 표시됩니다.');
-                });
-            }
-        });
-    </script>
 </body>
 </html>
