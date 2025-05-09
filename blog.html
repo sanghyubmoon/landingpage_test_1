@@ -13,27 +13,130 @@
         .page-header {
             background-color: var(--dark-background);
             color: white;
-            padding: 8rem 0 4rem;
+            padding: 10rem 0 6rem;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://source.unsplash.com/random/1920x1080/?data') center/cover no-repeat;
+            opacity: 0.2;
+            z-index: 0;
+        }
+        
+        .page-header-content {
+            position: relative;
+            z-index: 1;
         }
         
         .page-title {
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 800;
             margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, var(--primary-color), #6b5ce7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(107, 92, 231, 0.3);
         }
         
         .page-subtitle {
-            font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
             max-width: 700px;
             margin: 0 auto;
-            line-height: 1.6;
+            line-height: 1.7;
+        }
+        
+        .blog-header-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2.5rem;
+        }
+        
+        .blog-stat {
+            text-align: center;
+        }
+        
+        .blog-stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .blog-stat-label {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.7);
         }
         
         .blog-section {
             padding: 5rem 0;
             background-color: var(--light-background);
+        }
+        
+        .blog-filters {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+        
+        .blog-filter-tabs {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+        
+        .blog-filter-tab {
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            background-color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .blog-filter-tab.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .blog-filter-tab:hover:not(.active) {
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+        }
+        
+        .blog-sort {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .blog-sort-label {
+            font-size: 0.9rem;
+            color: var(--light-text);
+        }
+        
+        .blog-sort-select {
+            padding: 0.6rem 1.2rem;
+            border-radius: var(--border-radius);
+            border: 1px solid #edf2f7;
+            background-color: white;
+            font-size: 0.9rem;
+            cursor: pointer;
+            outline: none;
         }
         
         .blog-container {
@@ -43,649 +146,109 @@
         }
         
         .blog-posts {
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: 1fr;
             gap: 3rem;
         }
         
-        .blog-post {
-            background-color: white;
+        .featured-posts {
+            margin-bottom: 4rem;
+        }
+        
+        .section-heading {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 60%;
+            height: 3px;
+            background: linear-gradient(45deg, var(--primary-color), #6b5ce7);
+            border-radius: 3px;
+        }
+        
+        .featured-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .featured-main {
+            position: relative;
             border-radius: var(--border-radius);
             overflow: hidden;
             box-shadow: var(--box-shadow);
-            transition: var(--transition);
+            height: 450px;
         }
         
-        .blog-post:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-        }
-        
-        .blog-cover {
-            width: 100%;
-            height: 300px;
-            overflow: hidden;
-        }
-        
-        .blog-cover img {
+        .featured-main-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: var(--transition);
         }
         
-        .blog-post:hover .blog-cover img {
-            transform: scale(1.05);
-        }
-        
-        .blog-content {
+        .featured-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
             padding: 2rem;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: white;
         }
         
-        .blog-meta {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--light-text);
-            font-size: 0.9rem;
-        }
-        
-        .blog-category {
-            background-color: var(--primary-light);
-            color: var(--primary-color);
+        .featured-tag {
+            background-color: var(--primary-color);
+            color: white;
             padding: 0.3rem 0.8rem;
             border-radius: 50px;
             font-weight: 600;
             font-size: 0.8rem;
+            display: inline-block;
+            margin-bottom: 1rem;
         }
         
-        .blog-title {
+        .featured-title {
             font-size: 1.8rem;
             font-weight: 700;
             margin-bottom: 1rem;
             line-height: 1.3;
         }
         
-        .blog-excerpt {
-            color: var(--light-text);
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
-        
-        .read-more {
-            font-weight: 600;
-            color: var(--primary-color);
+        .featured-meta {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
         }
         
-        .read-more i {
-            transition: var(--transition);
-        }
-        
-        .read-more:hover i {
-            transform: translateX(5px);
-        }
-        
-        .sidebar {
-            display: flex;
-            flex-direction: column;
-            gap: 2.5rem;
-        }
-        
-        .sidebar-box {
-            background-color: white;
-            border-radius: var(--border-radius);
-            padding: 2rem;
-            box-shadow: var(--box-shadow);
-        }
-        
-        .sidebar-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            position: relative;
-            padding-bottom: 0.8rem;
-        }
-        
-        .sidebar-title::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 50px;
-            height: 3px;
-            background-color: var(--primary-color);
-        }
-        
-        .search-form {
-            display: flex;
-            margin-bottom: 1rem;
-        }
-        
-        .search-input {
-            flex: 1;
-            padding: 0.8rem 1rem;
-            border: 1px solid #edf2f7;
-            border-radius: var(--border-radius) 0 0 var(--border-radius);
-            font-size: 0.95rem;
-            outline: none;
-        }
-        
-        .search-button {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 0 1.2rem;
-            border-radius: 0 var(--border-radius) var(--border-radius) 0;
-            cursor: pointer;
-        }
-        
-        .categories-list {
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-        }
-        
-        .category-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-bottom: 0.8rem;
-            border-bottom: 1px solid #edf2f7;
-        }
-        
-        .category-item:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-        
-        .category-name {
-            color: var(--text-color);
-            font-weight: 500;
-            transition: var(--transition);
-        }
-        
-        .category-name:hover {
-            color: var(--primary-color);
-        }
-        
-        .category-count {
-            background-color: var(--primary-light);
-            color: var(--primary-color);
-            font-size: 0.8rem;
-            font-weight: 600;
-            padding: 0.2rem 0.6rem;
-            border-radius: 50px;
-        }
-        
-        .popular-posts {
+        .featured-secondary {
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
         }
         
-        .popular-post {
+        .featured-item {
             display: flex;
             gap: 1rem;
-        }
-        
-        .popular-post-image {
-            width: 80px;
-            height: 80px;
+            background-color: white;
             border-radius: var(--border-radius);
             overflow: hidden;
-            flex-shrink: 0;
-        }
-        
-        .popular-post-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .popular-post-content {
-            flex: 1;
-        }
-        
-        .popular-post-title {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            line-height: 1.4;
-        }
-        
-        .popular-post-title a {
-            color: var(--text-color);
+            box-shadow: var(--box-shadow);
             transition: var(--transition);
+            height: 130px;
         }
         
-        .popular-post-title a:hover {
-            color: var(--primary-color);
-        }
-        
-        .popular-post-date {
-            font-size: 0.85rem;
-            color: var(--light-text);
-        }
-        
-        .tag-cloud {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-        }
-        
-        .tag {
-            background-color: var(--light-background);
-            color: var(--light-text);
-            padding: 0.4rem 0.8rem;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            transition: var(--transition);
-        }
-        
-        .tag:hover {
-            background-color: var(--primary-color);
-            color: white;
-        }
-        
-        .newsletter-form {
-            margin-top: 1.5rem;
-        }
-        
-        .newsletter-input {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            border: 1px solid #edf2f7;
-            border-radius: var(--border-radius);
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-            outline: none;
-        }
-        
-        .pagination {
-            display: flex;
-            justify-content: center;
-            margin-top: 4rem;
-            gap: 0.5rem;
-        }
-        
-        .page-link {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: var(--border-radius);
-            font-weight: 600;
-            transition: var(--transition);
-        }
-        
-        .page-link:hover, .page-link.active {
-            background-color: var(--primary-color);
-            color: white;
-        }
-        
-        @media (max-width: 992px) {
-            .blog-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .sidebar {
-                order: -1;
-            }
-            
-            .page-title {
-                font-size: 2.2rem;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .blog-meta {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.5rem;
-            }
-            
-            .blog-title {
-                font-size: 1.5rem;
-            }
-            
-            .blog-cover {
-                height: 200px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <!-- 헤더 -->
-    <header>
-        <div class="container header-content">
-            <div class="logo">
-                <img src="https://raw.githubusercontent.com/sanghyubmoon/landingpage_test_1/main/images/core-creator-logo.svg" alt="COHETE LAB Logo" class="logo-img">
-                COHETE LAB
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html#core-rank">CORE-RANK</a></li>
-                    <li><a href="index.html#features">주요 기능</a></li>
-                    <li><a href="index.html#benefits">비즈니스 혜택</a></li>
-                    <li><a href="index.html#pricing">요금제</a></li>
-                    <li><a href="index.html#technology">기술력</a></li>
-                    <li><a href="index.html#global">글로벌 서비스</a></li>
-                    <li><a href="index.html#contact">문의하기</a></li>
-                </ul>
-            </nav>
-            <button class="cta-button header-cta">무료 체험 신청</button>
-            <div class="mobile-menu-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
-        </div>
-    </header>
-
-    <!-- 페이지 헤더 -->
-    <section class="page-header">
-        <div class="container">
-            <h1 class="page-title">인플루언서 마케팅 인사이트 블로그</h1>
-            <p class="page-subtitle">인플루언서 마케팅 트렌드와 데이터 기반 인사이트를 공유합니다</p>
-        </div>
-    </section>
-
-    <!-- 블로그 섹션 -->
-    <section class="blog-section">
-        <div class="container">
-            <div class="blog-container">
-                <div class="blog-posts">
-                    <!-- 블로그 포스트 1 -->
-                    <article class="blog-post">
-                        <div class="blog-cover">
-                            <img src="https://source.unsplash.com/random/800x500/?marketing" alt="인플루언서 마케팅 전망">
-                        </div>
-                        <div class="blog-content">
-                            <div class="blog-meta">
-                                <span class="blog-category">트렌드</span>
-                                <span><i class="far fa-calendar"></i> 2025.04.25</span>
-                                <span><i class="far fa-user"></i> 임수현</span>
-                                <span><i class="far fa-comment"></i> 12 댓글</span>
-                            </div>
-                            <h2 class="blog-title">2025년 인플루언서 마케팅 전망: 주목해야 할 5가지 트렌드</h2>
-                            <p class="blog-excerpt">디지털 마케팅 생태계에서 인플루언서 마케팅은 끊임없이 진화하고 있습니다. 2025년에 들어서면서 인플루언서 마케팅은 더욱 정교해지고 데이터 중심적으로 변화하고 있습니다. 본 글에서는 올해 주목해야 할 5가지 인플루언서 마케팅 트렌드를 살펴봅니다.</p>
-                            <a href="#" class="read-more">자세히 보기 <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </article>
-                    
-                    <!-- 블로그 포스트 2 -->
-                    <article class="blog-post">
-                        <div class="blog-cover">
-                            <img src="https://source.unsplash.com/random/800x500/?data" alt="데이터 분석 중요성">
-                        </div>
-                        <div class="blog-content">
-                            <div class="blog-meta">
-                                <span class="blog-category">데이터 분석</span>
-                                <span><i class="far fa-calendar"></i> 2025.04.12</span>
-                                <span><i class="far fa-user"></i> 정다영</span>
-                                <span><i class="far fa-comment"></i> 24 댓글</span>
-                            </div>
-                            <h2 class="blog-title">데이터로 보는 인플루언서 마케팅의 진정한 ROI 측정 방법</h2>
-                            <p class="blog-excerpt">인플루언서 마케팅의 실제 ROI를 측정하는 것은 많은 마케터들의 고민입니다. 단순한 좋아요나 조회수를 넘어, 실질적인 브랜드 가치와 매출 증가에 미치는 영향을 파악하는 방법에 대해 알아봅니다. 기존의 지표를 넘어 중요한 데이터 포인트를 활용하는 방법을 공유합니다.</p>
-                            <a href="#" class="read-more">자세히 보기 <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </article>
-                    
-                    <!-- 블로그 포스트 3 -->
-                    <article class="blog-post">
-                        <div class="blog-cover">
-                            <img src="https://source.unsplash.com/random/800x500/?ai" alt="AI와 인플루언서 마케팅">
-                        </div>
-                        <div class="blog-content">
-                            <div class="blog-meta">
-                                <span class="blog-category">AI 기술</span>
-                                <span><i class="far fa-calendar"></i> 2025.04.05</span>
-                                <span><i class="far fa-user"></i> 박서연</span>
-                                <span><i class="far fa-comment"></i> 18 댓글</span>
-                            </div>
-                            <h2 class="blog-title">AI가 인플루언서 마케팅을 어떻게 변화시키고 있는가</h2>
-                            <p class="blog-excerpt">인공지능 기술은 인플루언서 마케팅의 모든 측면을 혁신하고 있습니다. 콘텐츠 분석부터 인플루언서 매칭, 성과 예측까지 AI가 마케팅 전략을 어떻게 향상시키는지 알아봅니다. CORE-RANK의 AI 기술을 활용한 실제 사례를 통해 그 효과를 살펴봅니다.</p>
-                            <a href="#" class="read-more">자세히 보기 <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </article>
-                    
-                    <!-- 블로그 포스트 4 -->
-                    <article class="blog-post">
-                        <div class="blog-cover">
-                            <img src="https://source.unsplash.com/random/800x500/?global" alt="글로벌 인플루언서 마케팅">
-                        </div>
-                        <div class="blog-content">
-                            <div class="blog-meta">
-                                <span class="blog-category">글로벌 전략</span>
-                                <span><i class="far fa-calendar"></i> 2025.03.28</span>
-                                <span><i class="far fa-user"></i> 이준호</span>
-                                <span><i class="far fa-comment"></i> 32 댓글</span>
-                            </div>
-                            <h2 class="blog-title">글로벌 인플루언서 마케팅: 지역별 전략과 성공 사례</h2>
-                            <p class="blog-excerpt">글로벌 시장에서 인플루언서 마케팅은 문화적 맥락과 지역별 특성을 고려해야 합니다. 아시아, 북미, 유럽 시장에서의 인플루언서 마케팅 전략과 실제 성공 사례를 분석하며, 글로벌 캠페인을 효과적으로 진행하기 위한 핵심 인사이트를 제공합니다.</p>
-                            <a href="#" class="read-more">자세히 보기 <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </article>
-                    
-                    <!-- 블로그 포스트 5 -->
-                    <article class="blog-post">
-                        <div class="blog-cover">
-                            <img src="https://source.unsplash.com/random/800x500/?social" alt="소셜 커머스와 인플루언서">
-                        </div>
-                        <div class="blog-content">
-                            <div class="blog-meta">
-                                <span class="blog-category">소셜 커머스</span>
-                                <span><i class="far fa-calendar"></i> 2025.03.15</span>
-                                <span><i class="far fa-user"></i> 송재윤</span>
-                                <span><i class="far fa-comment"></i> 28 댓글</span>
-                            </div>
-                            <h2 class="blog-title">소셜 커머스와 인플루언서 마케팅의 시너지 극대화하기</h2>
-                            <p class="blog-excerpt">소셜 미디어 플랫폼에서의 직접 구매가 가능해지면서 인플루언서와 소셜 커머스의 결합은 큰 시너지를 내고 있습니다. TikTok Shop, Instagram 쇼핑 기능 등과 연계한 인플루언서 마케팅 전략과 성공적인 소셜 커머스 캠페인을 위한 팁을 소개합니다.</p>
-                            <a href="#" class="read-more">자세히 보기 <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </article>
-                    
-                    <!-- 페이지네이션 -->
-                    <div class="pagination">
-                        <a href="#" class="page-link active">1</a>
-                        <a href="#" class="page-link">2</a>
-                        <a href="#" class="page-link">3</a>
-                        <a href="#" class="page-link">4</a>
-                        <a href="#" class="page-link">5</a>
-                        <a href="#" class="page-link"><i class="fas fa-angle-right"></i></a>
-                    </div>
-                </div>
-                
-                <!-- 사이드바 -->
-                <aside class="sidebar">
-                    <!-- 검색 -->
-                    <div class="sidebar-box">
-                        <h3 class="sidebar-title">검색</h3>
-                        <form class="search-form">
-                            <input type="text" class="search-input" placeholder="검색어를 입력하세요...">
-                            <button type="submit" class="search-button">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </form>
-                    </div>
-                    
-                    <!-- 카테고리 -->
-                    <div class="sidebar-box">
-                        <h3 class="sidebar-title">카테고리</h3>
-                        <div class="categories-list">
-                            <div class="category-item">
-                                <a href="#" class="category-name">트렌드</a>
-                                <span class="category-count">12</span>
-                            </div>
-                            <div class="category-item">
-                                <a href="#" class="category-name">데이터 분석</a>
-                                <span class="category-count">18</span>
-                            </div>
-                            <div class="category-item">
-                                <a href="#" class="category-name">AI 기술</a>
-                                <span class="category-count">9</span>
-                            </div>
-                            <div class="category-item">
-                                <a href="#" class="category-name">글로벌 전략</a>
-                                <span class="category-count">15</span>
-                            </div>
-                            <div class="category-item">
-                                <a href="#" class="category-name">소셜 커머스</a>
-                                <span class="category-count">7</span>
-                            </div>
-                            <div class="category-item">
-                                <a href="#" class="category-name">성공 사례</a>
-                                <span class="category-count">21</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- 인기 포스트 -->
-                    <div class="sidebar-box">
-                        <h3 class="sidebar-title">인기 포스트</h3>
-                        <div class="popular-posts">
-                            <div class="popular-post">
-                                <div class="popular-post-image">
-                                    <img src="https://source.unsplash.com/random/100x100/?marketing" alt="인플루언서 선정 가이드">
-                                </div>
-                                <div class="popular-post-content">
-                                    <h4 class="popular-post-title">
-                                        <a href="#">브랜드에 최적화된 인플루언서 선정을 위한 데이터 기반 가이드</a>
-                                    </h4>
-                                    <p class="popular-post-date">2025.02.18</p>
-                                </div>
-                            </div>
-                            <div class="popular-post">
-                                <div class="popular-post-image">
-                                    <img src="https://source.unsplash.com/random/100x100/?tech" alt="마케팅 KPI">
-                                </div>
-                                <div class="popular-post-content">
-                                    <h4 class="popular-post-title">
-                                        <a href="#">인플루언서 마케팅 KPI 설정: 목표에 맞는 성과 지표 정의하기</a>
-                                    </h4>
-                                    <p class="popular-post-date">2025.01.25</p>
-                                </div>
-                            </div>
-                            <div class="popular-post">
-                                <div class="popular-post-image">
-                                    <img src="https://source.unsplash.com/random/100x100/?social" alt="콘텐츠 분석">
-                                </div>
-                                <div class="popular-post-content">
-                                    <h4 class="popular-post-title">
-                                        <a href="#">AI 기반 콘텐츠 분석으로 인플루언서 캠페인 최적화하기</a>
-                                    </h4>
-                                    <p class="popular-post-date">2025.03.02</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- 태그 클라우드 -->
-                    <div class="sidebar-box">
-                        <h3 class="sidebar-title">태그</h3>
-                        <div class="tag-cloud">
-                            <a href="#" class="tag">인플루언서 마케팅</a>
-                            <a href="#" class="tag">데이터 분석</a>
-                            <a href="#" class="tag">AI 기술</a>
-                            <a href="#" class="tag">ROI</a>
-                            <a href="#" class="tag">성과 측정</a>
-                            <a href="#" class="tag">소셜 미디어</a>
-                            <a href="#" class="tag">글로벌 마케팅</a>
-                            <a href="#" class="tag">콘텐츠 전략</a>
-                            <a href="#" class="tag">인플루언서 선정</a>
-                            <a href="#" class="tag">마케팅 트렌드</a>
-                            <a href="#" class="tag">소셜 커머스</a>
-                            <a href="#" class="tag">브랜드 콜라보</a>
-                        </div>
-                    </div>
-                    
-                    <!-- 뉴스레터 구독 -->
-                    <div class="sidebar-box">
-                        <h3 class="sidebar-title">뉴스레터 구독</h3>
-                        <p>최신 인플루언서 마케팅 인사이트와 데이터 분석 리포트를 정기적으로 받아보세요.</p>
-                        <form class="newsletter-form">
-                            <input type="email" class="newsletter-input" placeholder="이메일 주소를 입력하세요" required>
-                            <button type="submit" class="cta-button full">구독하기</button>
-                        </form>
-                    </div>
-                </aside>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA 섹션 -->
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-content">
-                <h2>데이터 기반 인플루언서 마케팅의 힘을 경험하세요</h2>
-                <p>CORE-RANK 솔루션으로 인플루언서 마케팅 전략을 새로운 차원으로 끌어올리세요.</p>
-                <div class="cta-buttons">
-                    <button class="cta-button large">무료 체험 시작하기</button>
-                    <button class="secondary-button large">솔루션 데모 보기</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 푸터 -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <div class="footer-logo">COHETE LAB</div>
-                    <p class="footer-description">데이터 기반 인플루언서 마케팅의 새로운 기준, CORE-RANK</p>
-                    <div class="footer-social">
-                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-                <div class="footer-links">
-                    <div class="footer-column">
-                        <h3 class="footer-heading">솔루션</h3>
-                        <ul>
-                            <li><a href="index.html#core-rank">CORE-RANK</a></li>
-                            <li><a href="index.html#features">주요 기능</a></li>
-                            <li><a href="index.html#pricing">요금제</a></li>
-                            <li><a href="index.html#global">글로벌 솔루션</a></li>
-                            <li><a href="international.html">국제 진출</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h3 class="footer-heading">회사</h3>
-                        <ul>
-                            <li><a href="about.html">회사 소개</a></li>
-                            <li><a href="team.html">팀 소개</a></li>
-                            <li><a href="#">채용 정보</a></li>
-                            <li><a href="#">파트너십</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h3 class="footer-heading">리소스</h3>
-                        <ul>
-                            <li><a href="blog.html">블로그</a></li>
-                            <li><a href="insights.html">인사이트 리포트</a></li>
-                            <li><a href="#">웨비나</a></li>
-                            <li><a href="help.html">도움말 센터</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 COHETE LAB. All rights reserved.</p>
-                <div class="footer-legal">
-                    <a href="#">개인정보처리방침</a>
-                    <a href="#">이용약관</a>
-                    <a href="#">쿠키 정책</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
-</body>
-</html>
+        .featured-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,
